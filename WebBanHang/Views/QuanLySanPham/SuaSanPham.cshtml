@@ -1,0 +1,312 @@
+﻿@model WebBanHang.Models.SanPham
+@{
+    ViewBag.Title = "Sửa sản phẩm";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<style>
+    .error {
+        color: red;
+        font-weight: unset;
+        font-size: 14px;
+    }
+</style>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+<div class="form-w3layouts">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Sửa sản phẩm
+                </header>
+                <div class="panel-body">
+                    <div class="form">
+                        @using (Html.BeginForm("SuaSanPham", "QuanLySanPham", FormMethod.Post, new { @class = "cmxform form-horizontal ", enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.MaSP)
+
+                            @Html.Raw(ViewBag.LoiDinhDang as string) <br /> @Html.Raw(ViewBag.LocTrung)
+                            // left inputs
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TenSP, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.EditorFor(model => model.TenSP, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TenSP, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DonGia, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.TextBoxFor(model => model.DonGia, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.DonGia, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                @*@Model.DonGia.Value.ToString("N0") vnd*@
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MaLoaiSP, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.DropDownList("MaLoaiSP", null, "Chọn loại sản phẩm", htmlAttributes: new { @class = "form-control select2tt" })
+                                        @Html.ValidationMessageFor(model => model.MaLoaiSP, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MaNSX, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.DropDownList("MaNSX", null, "Chọn nhà sản xuất", htmlAttributes: new { @class = "form-control select2tt" })
+                                        @Html.ValidationMessageFor(model => model.MaNSX, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MaNCC, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.DropDownList("MaNCC", null, "Chọn nhà cung cấp", htmlAttributes: new { @class = "form-control select2tt" })
+                                        @Html.ValidationMessageFor(model => model.MaNCC, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.SoLanMua, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.EditorFor(model => model.SoLanMua, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SoLanMua, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.SoLuongTon, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.EditorFor(model => model.SoLuongTon, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SoLuongTon, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LuotXem, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.EditorFor(model => model.LuotXem, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.LuotXem, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                        @Html.LabelFor(model => model.LuotBinhChon, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                        <div class="col-md-8 col-sm-4">
+                                            @Html.EditorFor(model => model.LuotBinhChon, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.LuotBinhChon, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.LuotBinhLuan, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.EditorFor(model => model.LuotBinhLuan, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.LuotBinhLuan, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.NgayCapNhap, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.EditorFor(model => model.NgayCapNhap, new { htmlAttributes = new { @class = "form-control datett" } })
+                                        @Html.ValidationMessageFor(model => model.NgayCapNhap, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GioiThieu, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.TextAreaFor(model => model.GioiThieu, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GioiThieu, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                @*@Html.DisplayFor(model => model.NgayCapNhap)*@
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DaXoa, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.EditorFor(model => model.DaXoa, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.DaXoa, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            // right images
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+
+                                @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "control-label col-md-4 col-sm-6" })
+                                <div class="col-md-8 col-sm-6">
+                                    @if (Session["HinhAnh"] != null)
+                                    {
+                                        <img src="@Url.Content("~/Content/HinhAnhSP/" + Session["HinhAnh"].ToString())" style="margin:10px; width:75px; height:75px;" id="ImagePreview" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content("~/Content/HinhAnhSP/Alternate-image.png")" style="margin:10px; width:75px; height:75px;" id="ImagePreview" />
+                                    }
+                                    <input type="file" name="HinhAnh" id="HinhAnh" accept="image/jgp, image/png" onchange="ShowImagePreview(this, document.getElementById('ImagePreview'))" />
+                                    @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger hinhanh" })
+                                </div>
+
+                                @Html.LabelFor(model => model.HinhAnh1, htmlAttributes: new { @class = "control-label col-md-4 col-sm-6" })
+                            <div class="col-md-8 col-sm-6">
+                                @if (Session["HinhAnh1"] != null)
+                                {
+                                    <img src="@Url.Content("~/Content/HinhAnhSP/" + Session["HinhAnh1"].ToString())" style="margin:10px; width:75px; height:75px;" id="ImagePreview1" />
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("~/Content/HinhAnhSP/Alternate-image.png")" style="margin:10px; width:75px; height:75px;" id="ImagePreview1" />
+                                }
+                                <input type="file" name="HinhAnh" id="HinhAnh1" accept="image/jgp, image/png" onchange="ShowImagePreview(this, document.getElementById('ImagePreview1'))" />
+                                @Html.ValidationMessageFor(model => model.HinhAnh1, "", new { @class = "text-danger hinhanh1" })
+                            </div>
+
+                                @Html.LabelFor(model => model.HinhAnh2, htmlAttributes: new { @class = "control-label col-md-4 col-sm-6" })
+                            <div class="col-md-8 col-sm-6">
+                                @if (Session["HinhAnh2"] != null)
+                                {
+                                    <img src="@Url.Content("~/Content/HinhAnhSP/" + Session["HinhAnh2"].ToString())" style="margin:10px; width:75px; height:75px;" id="ImagePreview2" />
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("~/Content/HinhAnhSP/Alternate-image.png")" style="margin:10px; width:75px; height:75px;" id="ImagePreview2" />
+                                }
+                                <input type="file" name="HinhAnh" id="HinhAnh2" accept="image/jgp, image/png" onchange="ShowImagePreview(this, document.getElementById('ImagePreview2'))" />
+                                @Html.ValidationMessageFor(model => model.HinhAnh2, "", new { @class = "text-danger hinhanh2" })
+                            </div>
+
+                                @Html.LabelFor(model => model.HinhAnh3, htmlAttributes: new { @class = "control-label col-md-4 col-sm-6" })
+                            <div class="col-md-8 col-sm-6">
+                                @if (Session["HinhAnh3"] != null)
+                                {
+                                    <img src="@Url.Content("~/Content/HinhAnhSP/" + Session["HinhAnh3"].ToString())" style="margin:10px; width:75px; height:75px;" id="ImagePreview3" />
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("~/Content/HinhAnhSP/Alternate-image.png")" style="margin:10px; width:75px; height:75px;" id="ImagePreview3" />
+                                }
+                                <input type="file" name="HinhAnh" id="HinhAnh3" accept="image/jgp, image/png" onchange="ShowImagePreview(this, document.getElementById('ImagePreview3'))" />
+                                @Html.ValidationMessageFor(model => model.HinhAnh3, "", new { @class = "text-danger hinhanh3" })
+                            </div>
+
+                                @Html.LabelFor(model => model.HinhAnh4, htmlAttributes: new { @class = "control-label col-md-4 col-sm-6" })
+                            <div class="col-md-8 col-sm-6">
+                                @if (Session["HinhAnh4"] != null)
+                                {
+                                    <img src="@Url.Content("~/Content/HinhAnhSP/" + Session["HinhAnh4"].ToString())" style="margin:10px; width:75px; height:75px;" id="ImagePreview4" />
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("~/Content/HinhAnhSP/Alternate-image.png")" style="margin:10px; width:75px; height:75px;" id="ImagePreview4" />
+                                }
+                                <input type="file" name="HinhAnh" id="HinhAnh4" accept="image/jgp, image/png" onchange="ShowImagePreview(this, document.getElementById('ImagePreview4'))" />
+                                @Html.ValidationMessageFor(model => model.HinhAnh4, "", new { @class = "text-danger hinhanh4" })
+                            </div>
+
+                            </div>
+                            // cấu hình, mô tả
+                            <div class="col-lg-12 col-md-12 col-sm-12" style="padding-left: 60px">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CauHinh, htmlAttributes: new { @class = "control-label" })
+                                    @Html.ValidationMessageFor(model => model.CauHinh, "", new { @class = "text-danger" })
+
+                                    <div class="col-md-12 col-sm-12">
+                                        @Html.TextAreaFor(x => x.CauHinh, htmlAttributes: new { @class = "form-control ckeditor" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label" })
+                                    @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger mota" })
+
+                                    <div class="col-md-12 col-sm-12">
+                                        @Html.TextAreaFor(model => model.MoTa, htmlAttributes: new { @class = "form-control ckeditor" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary" type="submit" id="submit">Save</button>
+                                <button class="btn btn-default" type="button" id="cancel">Cancel</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        function ShowImagePreview(imageUploader, previewImage) {
+            if (imageUploader.files && imageUploader.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(previewImage).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(imageUploader.files[0]);
+            }
+        }
+        $(".form-horizontal").validate({
+            ignore: [],
+            rules: {
+                TenSP: "required",
+                DonGia: {
+                    required: true,
+                    number: true
+                },
+                MaLoaiSP: "required",
+                MaNSX: "required",
+                MaNCC: "required",
+                MoTa: {
+                    required: function (textarea) {
+                        CKEDITOR.instances[textarea.id].updateElement();
+                        var editorcontent = textarea.value.replace(/<[^>]*>/gi, '');
+                        return editorcontent.length === 0;
+                    }
+                },
+                CauHinh: {
+                    required: function (textarea) {
+                        CKEDITOR.instances[textarea.id].updateElement();
+                        var editorcontent = textarea.value.replace(/<[^>]*>/gi, '');
+                        return editorcontent.length === 0;
+                    }
+                }
+            },
+            messages: {
+                TenSP: "Nhập tên sản phẩm",
+                DonGia: {
+                    required: "Nhập đơn giá",
+                    number: "Chỉ được nhập số"
+                },
+                MaLoaiSP: "Chọn loại sản phẩm",
+                MaNSX: "Chọn nhà sản xuất",
+                MaNCC: "Chọn nhà cung cấp",
+
+                MoTa: {
+                    required: "Nhập mô tả sản phẩm"
+                },
+                CauHinh: {
+                    required: "Nhập cấu hình sản phẩm"
+                },
+            }
+        });
+
+        $("#cancel").on("click", function () {
+            window.location.href = "/QuanLySanPham/Index";
+        });
+        $(".datett").datepicker({
+            dateFormat: 'dd/mm/yy',
+            changeMonth: true,
+            changeYear: true
+
+        });
+                    //debugger
+                    //$("#DonGia").val().replace(".00", "");
+                    //$("#DonGia").val($("#DonGia").val().replace(".00", ""));
+                    //$("#DonGia").on("keyup", function (e) {
+                    //    var inputValue = $(this).val();
+                    //    var inputValue = inputValue.replace(/[\D\s\._\-]+/g, "");
+                    //    inputValue = inputValue ? parseInt(inputValue, 10) : 0;
+                    //    $(this).val(function () {
+                    //        return (inputValue === 0) ? "" : inputValue.toLocaleString("en-US");
+                    //    })
+                    //});
+    </script>
+}
+

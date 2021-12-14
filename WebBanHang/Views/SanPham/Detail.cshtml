@@ -1,0 +1,266 @@
+﻿@model WebBanHang.Models.SanPham
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var lstSanPhamKhac = (IEnumerable<WebBanHang.Models.SanPham>)ViewBag.SanPhamKhac;
+    var lstSanPhamBanChay = (IEnumerable<WebBanHang.Models.SanPham>)ViewBag.SanPhamBanChay;
+}
+<style>
+    .modal-content {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    .flexslider .slides img{
+        padding: 10px;
+    }
+    .flex-control-thumbs img{
+        padding:6px;
+    }
+</style>
+<div class="content">
+    <div class="section group">
+        <div class="cont-desc span_1_of_2">
+            <div class="grid images_3_of_2">
+                @*<img src="~/Content/ClientLayout/images/preview-img3.jpg" alt="" />*@
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li data-thumb="@Url.Content("/Content/HinhAnhSP/" + Model.HinhAnh1)">
+                            <img src="@Url.Content("/Content/HinhAnhSP/" + Model.HinhAnh1)" />
+                        </li>
+                        <li data-thumb="@Url.Content("/Content/HinhAnhSP/" + Model.HinhAnh2)">
+                            <img src="@Url.Content("/Content/HinhAnhSP/" + Model.HinhAnh2)" />
+                        </li>
+                        <li data-thumb="@Url.Content("/Content/HinhAnhSP/" + Model.HinhAnh3)">
+                            <img src="@Url.Content("/Content/HinhAnhSP/" + Model.HinhAnh3)" />
+                        </li>
+                        <li data-thumb="@Url.Content("/Content/HinhAnhSP/" + Model.HinhAnh4)">
+                            <img src="@Url.Content("/Content/HinhAnhSP/" + Model.HinhAnh4)" />
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- FlexSlider -->
+                <script defer src="/Content/js/jquery.flexslider.js"></script>
+                <link rel="stylesheet" href="/Content/css/flexslider.css" type="text/css" media="screen" />
+
+                <script>
+                    // Can also be used with $(document).ready()
+                    $(window).load(function () {
+                        $('.flexslider').flexslider({
+                            animation: "slide",
+                            controlNav: "thumbnails"
+                        });
+                    });
+                </script>
+            </div>
+            <div class="desc span_3_of_2">
+                <h2>@Model.TenSP </h2>
+                <p>@Html.Raw(Model.GioiThieu)</p>
+                <div class="price">
+                    <p>Price: <span>$698.03</span></p>
+                </div>
+
+                <div class="add-cart">
+
+                    <div class="button"><span><a href="#">Add to Cart</a></span></div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="product-desc">
+                <h2>Bài viết đánh giá</h2>
+                <div class="modal-content mota">
+                    @Html.Raw(Model.MoTa)
+                </div>
+                <a href="javascript:void(0)" class="btn-detail" data-target=".bd-example-modal-lg" data-toggle="modal">
+                    <span>Xem thêm</span>
+                </a>
+            </div>
+
+        </div>
+        <div class="rightsidebar span_3_of_1">
+            <h2>Cấu hình</h2>
+            @*<ul>
+                    <li><a href="#">Mobile Phones</a></li>
+                    <li><a href="#">Desktop</a></li>
+                    <li><a href="#">Laptop</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Software</a></li>
+                    <li><a href="#">Sports & Fitness</a></li>
+                    <li><a href="#">Footwear</a></li>
+                    <li><a href="#">Jewellery</a></li>
+                    <li><a href="#">Clothing</a></li>
+                    <li><a href="#">Home Decor & Kitchen</a></li>
+                    <li><a href="#">Beauty & Healthcare</a></li>
+                    <li><a href="#">Toys, Kids & Babies</a></li>
+                </ul>*@
+            @Html.Raw(Model.CauHinh)
+            <div class="subscribe">
+                <h2>Sản phẩm bán chạy</h2>
+                @foreach (var item in lstSanPhamBanChay)
+                {
+                    <div style="margin-top: 1em;">
+                        <div style="float: left; width: 24%;">
+                            <a href="/SanPham/Detail/@item.MaSP"><img src="@Url.Content("/Content/HinhAnhSP/" + item.HinhAnh)" /></a>
+                        </div>
+                        <div style="float: right; width:68%;">
+                            <h6 style="font-size: 21px; line-height: 1.3em; color:#cc3636; font-family: 'lato', serif">@item.TenSP</h6>
+                            <span style="display: block; padding: 0.3em 0 0; font-size: 16px;">@item.DonGia.Value.ToString("N0") VND</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+
+        <!-- Large modal -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    @Html.Raw(Model.MoTa)
+                    @*@Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.CauHinh))*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content_top">
+        <div class="heading">
+            <h3>Sản phẩm khác</h3>
+        </div>
+        <div class="page-no">
+            <p>
+                <ul>
+                    <li>[<a href="#"> Xem thêm >>></a>]</li>
+                </ul>
+            </p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group">
+
+        @foreach (var item in lstSanPhamKhac)
+        {
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="preview-3.html"><img src="@Url.Content("/Content/HinhAnhSP/" + item.HinhAnh)" style="height: 212px; width:180px;" alt="" /></a>
+                <h2>@item.TenSP</h2>
+                <p><span class="price">@item.DonGia.Value.ToString("N0")</span></p>
+                <div class="button"><span><img src="/Content/ClientLayout/images/cart.jpg" alt="" /><a href="preview-3.html" class="cart-button">Add to Cart</a></span> </div>
+                <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .content_top {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 3px;
+        background-color: #e8e8e8;
+    }
+
+    .content-t-wrap {
+        max-width: 700px;
+        margin: auto;
+        padding: 20px 0;
+    }
+
+    .parameter-all {
+        background-color: #fff;
+    }
+
+    .parameter-item {
+        padding: 0 30px;
+    }
+
+    .parameter-ttl {
+        background-color: #f1f1f1;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    .parameter-all .ulist li {
+        border-bottom: 1px solid #f1f1f1;
+        display: flex;
+        padding: 10px;
+    }
+
+    .span_3_of_1 {
+        font-family: Times New Roman, Times, serif;
+        color: #484040;
+        /*color: #333;*/
+    }
+
+        .span_3_of_1 p {
+            margin: 9px 0;
+        }
+
+    .modal-dialog {
+        margin: auto !important;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+    .btn-detail {
+        position: relative;
+        border: 1px solid #2f80ed;
+        border-radius: 5px;
+        color: #2f80ed;
+        display: block;
+        margin: 0 auto;
+        max-width: 340px;
+        padding: 10px 5px;
+        text-align: center;
+    }
+
+        .btn-detail span::before {
+            border-bottom: 5px solid transparent;
+            border-top: 5px solid transparent;
+            border-left: 5px solid #2f80ed;
+            content: '';
+            position: absolute;
+            top: 14px;
+            right: 120px;
+        }
+
+    .mota {
+        height: 450px;
+        overflow: hidden;
+        transition: .3s;
+        padding: 0 !important;
+        border: none;
+        margin-bottom: 5px;
+    }
+
+    .modal-content {
+        padding: 20px;
+        text-align: justify;
+    }
+
+        .modal-content h3 {
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 28px;
+            margin: 20px 0 15px 0;
+        }
+
+        .modal-content p {
+            line-height: 1.5;
+            margin-bottom: 10px;
+            font-size: 16px !important;
+        }
+
+            .modal-content p img {
+                width: 100% !important;
+            }
+</style>
+

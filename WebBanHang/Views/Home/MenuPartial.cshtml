@@ -1,0 +1,84 @@
+﻿@model IEnumerable<WebBanHang.Models.SanPham>
+<style>
+    .nav-drop li:hover {
+        background: #c1b6b6;
+    }
+</style>
+<div class="h_menu">
+    <a id="touch-menu" class="mobile-menu" href="#">Menu</a>
+    <nav>
+        <ul class="menu list-unstyled">
+            <li><a href="index.html">HOME</a></li>
+            <li class="activate">
+                <a href="products.html">Products</a>
+                <ul class="sub-menu list-unstyled sub-menu2">
+                    <div class="navg-drop-main">
+                        <div class="nav-drop nav-top-brand">
+                            @foreach (var item in Model.GroupBy(x => x.LoaiSanPham))
+                            {
+                                <li><a href="products.html">@item.Key.TenLoai</a></li>
+                            }
+
+                        </div>
+                        <div class="clear"> </div>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="products.html">Top Brand</a>
+                <ul class="sub-menu list-unstyled sub-menu2">
+                    <div class="navg-drop-main">
+                        <div class="nav-drop nav-top-brand">
+                            @foreach (var item in Model.GroupBy(x => x.NhaSanXuat))
+                            {
+                                <li><a href="products.html">@item.Key.TenNSX</a></li>
+                            }
+
+                        </div>
+                        <div class="clear"> </div>
+                    </div>
+                </ul>
+            </li>
+            <li>
+                <a href="faq.html">Services</a>
+                <ul class="sub-menu list-unstyled sub-menu3">
+                    <div class="navg-drop-main">
+                        <div class="nav-drop">
+                            <li><a href="products.html">Product 4</a></li>
+                            <li><a href="products.html">Product 5</a></li>
+                            <li>
+                                <a href="products.html">Product 6</a>
+
+                            </li>
+                        </div>
+                        <div class="nav-drop">
+                            <li><a href="products.html">Product 4</a></li>
+                            <li><a href="products.html">Product 5</a></li>
+                            <li>
+                                <a href="products.html">Product 6</a>
+                            </li>
+                        </div>
+                        <div class="nav-drop">
+                            <li><a href="products.html">Product 4</a></li>
+                            <li><a href="products.html">Product 5</a></li>
+                            <li><a href="products.html">Product 6</a></li>
+                        </div>
+                        <div class="nav-drop">
+                            <li><a href="products.html">Product 4</a></li>
+                            <li><a href="products.html">Product 5</a></li>
+                            <li><a href="products.html">Product 6</a></li>
+                        </div>
+                        <div class="clear"> </div>
+                    </div>
+                </ul>
+            </li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#">Delivery</a></li>
+            <li><a href="faq.html">Faqs</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+            <div class="clear"> </div>
+        </ul>
+    </nav>
+    <script src="~/Content/ClientLayout/js/menu.js" type="text/javascript"></script>
+</div>
+

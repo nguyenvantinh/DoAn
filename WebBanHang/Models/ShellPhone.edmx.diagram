@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6615837579104277990630914e01d2d6" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="SellPhoneModel.BinhLuan" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.ChiTietDonDatHang" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.ChiTietPhieuNhap" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.DonDatHang" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.KhachHang" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.LoaiSanPham" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.NguoiDung" Width="1.5" PointX="7.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.NguoiDung_Quyen" Width="1.5" PointX="10" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.NhaCungCap" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.NhaSanXuat" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.PhieuNhap" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.Quyen" Width="1.5" PointX="7.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.SanPham" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SellPhoneModel.sysdiagram" Width="1.5" PointX="2.75" PointY="11.875" IsExpanded="true" />
+        <AssociationConnector Association="SellPhoneModel.FK__BinhLuan__MaSP__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="SellPhoneModel.FK__ChiTietDo__MaDDH__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="SellPhoneModel.FK__ChiTietDon__MaSP__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="SellPhoneModel.FK__ChiTietPhi__MaPN__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="SellPhoneModel.FK__ChiTietPhi__MaSP__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="SellPhoneModel.FK__DonDatHan__MaKha__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="SellPhoneModel.FK__SanPham__MaLoaiS__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="SellPhoneModel.FK__NguoiDung__MaNgu__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="SellPhoneModel.FK__NguoiDung__MaQuy__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="SellPhoneModel.FK__PhieuNhap__MaNCC__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="SellPhoneModel.FK__SanPham__MaNCC__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="SellPhoneModel.FK__SanPham__MaNSX__3D5E1FD2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

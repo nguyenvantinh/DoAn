@@ -1,0 +1,57 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<WebBanHang.Models.SanPham>
+@{
+    ViewBag.Title = "DanhSachSanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .grid_1_of_4:nth-child(5){
+        margin-left: 0 !important;
+    }
+    .pagination{
+        margin: 0;
+    }
+</style>
+<div class="content">
+    <div class="content_top">
+        <div class="heading">
+            <h3>Danh sách sản phẩm</h3>
+        </div>
+
+        <div class="page-no" style="font-size: 20px;">
+            <p>
+                Sắp xếp theo:
+                <select style="outline:none;" name="Order" id="Order">
+                    <option value="GiaTangDan" @(ViewBag.Order == "GiaTangDan" ? "selected" : "")>Giá tăng dần</option>
+                    <option value="GiaGiamDan" @(ViewBag.Order == "GiaGiamDan" ? "selected" : "")>Giá giảm dần</option>
+                </select>
+            </p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group">
+        @foreach (var item in Model)
+        {
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="preview-3.html"><img src="@Url.Content("/Content/HinhAnhSP/" + item.HinhAnh)" style="height: 212px; width:180px;" alt="" /></a>
+                <h2>@item.TenSP</h2>
+                <p><span class="price">@item.DonGia.Value.ToString("N0")</span></p>
+                <div class="button"><span><img src="/Content/ClientLayout/images/cart.jpg" alt="" /></span>
+                    @*<a href="/GioHang/ThemItemGioHang?maSP=@item.MaSP" class="cart-button">Add to Cart</a></span>*@
+                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = item.MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                </div>
+                <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
+            </div>
+        }
+    </div>
+    <div class="text-center" style="margin-top:10px;">
+        @Html.PagedListPager(Model, page => Url.Action("DanhSachSanPham", new { page, @Order = ViewBag.Order }))
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Order").change(function () {
+            window.location.href = "?Order=" + this.value;
+        })
+    });
+</script>
