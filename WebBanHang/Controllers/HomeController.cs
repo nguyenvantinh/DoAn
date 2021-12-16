@@ -13,7 +13,7 @@ namespace WebBanHang.Controllers
         public ActionResult Index()
         {
             ViewBag.lstSPNB = dbContext.SanPhams.Where(n => n.SPNoiBat == true);
-            ViewBag.lstSPM = dbContext.SanPhams.Where(n => n.Moi == 1).Take(4);
+            ViewBag.lstSPM = dbContext.SanPhams.Where(n => n.Moi == 1).Take(4).ToList();
             return View();
         }
         

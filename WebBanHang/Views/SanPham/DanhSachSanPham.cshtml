@@ -2,13 +2,18 @@
 @model PagedList.IPagedList<WebBanHang.Models.SanPham>
 @{
     ViewBag.Title = "DanhSachSanPham";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/ClientLayout.cshtml";
+}
+
+@section jsFooter{
+    <script src="/Content/ClientLayout/js/Cart.js"></script>
 }
 <style>
-    .grid_1_of_4:nth-child(5){
+    .grid_1_of_4:nth-child(5) {
         margin-left: 0 !important;
     }
-    .pagination{
+
+    .pagination {
         margin: 0;
     }
 </style>
@@ -36,9 +41,12 @@
                 <a href="preview-3.html"><img src="@Url.Content("/Content/HinhAnhSP/" + item.HinhAnh)" style="height: 212px; width:180px;" alt="" /></a>
                 <h2>@item.TenSP</h2>
                 <p><span class="price">@item.DonGia.Value.ToString("N0")</span></p>
-                <div class="button"><span><img src="/Content/ClientLayout/images/cart.jpg" alt="" /></span>
-                    @*<a href="/GioHang/ThemItemGioHang?maSP=@item.MaSP" class="cart-button">Add to Cart</a></span>*@
-                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = item.MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                <div class="button">
+                    <span>
+                        <img src="/Content/ClientLayout/images/cart.jpg" alt="" />
+                        <a href="#" class="cart-button" id="DSAddCart" data-id="@item.MaSP">Add to Cart</a>
+                    </span>
+                    @*@Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = item.MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button", @id="DSAddCart", })*@
                 </div>
                 <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
             </div>
@@ -48,6 +56,7 @@
         @Html.PagedListPager(Model, page => Url.Action("DanhSachSanPham", new { page, @Order = ViewBag.Order }))
     </div>
 </div>
+@*<script src="~/Content/ClientLayout/js/Cart.js"></script>*@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#Order").change(function () {

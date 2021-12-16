@@ -368,6 +368,7 @@
     <Content Include="Content\ClientLayout\images\team4.jpg" />
     <Content Include="Content\ClientLayout\images\twitter.png" />
     <Content Include="Content\ClientLayout\images\youtube.png" />
+    <Content Include="Content\ClientLayout\js\Cart.js" />
     <Content Include="Content\ClientLayout\js\easing.js" />
     <Content Include="Content\ClientLayout\js\jquery-1.7.2.min.js" />
     <Content Include="Content\ClientLayout\js\jquery.easing.js" />
@@ -1188,6 +1189,8 @@
     <Content Include="Views\QuanLySanPham\SanPhamMoi.cshtml" />
     <Content Include="Views\Home\MenuPartial.cshtml" />
     <Content Include="Views\SanPham\DanhSachSanPham.cshtml" />
+    <Content Include="Views\GioHang\ThongBao.cshtml" />
+    <Content Include="Views\Shared\ClientLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

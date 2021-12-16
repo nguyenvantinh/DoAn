@@ -28,6 +28,7 @@ namespace WebBanHang.Controllers
             return listGH;
         }
 
+        [HttpPost]
         public ActionResult ThemItemGioHang(int maSP)
         {
             SanPham sp = db.SanPhams.SingleOrDefault(n => n.MaSP == maSP);
@@ -40,37 +41,46 @@ namespace WebBanHang.Controllers
             ItemGioHang spCheck = listGH.SingleOrDefault(n => n.MaSP == maSP);
             if(spCheck != null)
             {
-                if(sp.SoLuongTon < spCheck.soluong)
+                if(sp.SoLuongTon <= spCheck.soluong)
                 {
-                    return Content("<script> alert(\"Sản phẩm đã hết hàng!\")</script>");
+                    //return Content("<script> alert(\"Sản phẩm đã hết hàng!\")</script>");
+                    //return RedirectToAction("ThongBao");
+                    return Json(new { status = false, mes = "Sản phẩm đã hết hàng" });
                 }
                 //cập nhật số lượng của sp đó
                 spCheck.soluong++;
                 //cập nhật tổng tiền của sp đó
                 spCheck.ThanhTien = spCheck.soluong * spCheck.DonGia;
-                //ViewBag.SoLuongItemGioHang = TinhSoLuongItemGioHang();
-                Session["CartItems"] = TinhSoLuongItemGioHang();
-                return PartialView("GioHangPartial");
+                //Session["CartItems"] = TinhSoLuongItemGioHang();
+                //return PartialView("GioHangPartial");
+                return Json(new { status = true });
             }
             ItemGioHang newItem = new ItemGioHang(maSP);
             if (sp.SoLuongTon < newItem.soluong)
             {
-                return Content("<script> alert(\"Sản phẩm đã hết hàng!\")</script>");
+                //return Content("<script> alert(\"Sản phẩm đã hết hàng!\")</script>");
+                //return View("ThongBao");
+                return Json(new { status = false, mes = "Sản phẩm đã hết hàng" });
             }
             listGH.Add(newItem);
             //ViewBag.SoLuongItemGioHang = TinhSoLuongItemGioHang();
-            Session["CartItems"] = TinhSoLuongItemGioHang();
-            return PartialView("GioHangPartial");
+            //Session["CartItems"] = TinhSoLuongItemGioHang();
+            //return PartialView("GioHangPartial");
+            return Json(new { status = true });
         }
-
-        public int TinhSoLuongItemGioHang()
+        public ActionResult ThongBao()
+        {
+            return View();
+        }
+        public ActionResult TinhSoLuongItemGioHang()
         {
             var listGH = Session["GioHang"] as List<ItemGioHang>;
             if(listGH == null)
             {
-                return 0;
+                return Json(new { status = false, Total = 0 },JsonRequestBehavior.AllowGet);
             }
-            return listGH.Sum(n => n.soluong);
+            var sum =  listGH.Sum(n => n.soluong);
+            return Json(new { status = true, Total = sum }, JsonRequestBehavior.AllowGet);
         }
         public decimal TinhTongTien()
         {
@@ -82,15 +92,15 @@ namespace WebBanHang.Controllers
             return listGH.Sum(n => n.ThanhTien);
         }
 
-        public ActionResult GioHangPartial()
-        {
-            if(TinhSoLuongItemGioHang() == 0)
-            {
-                return PartialView();
-            }
-            ViewBag.TongSoLuong = TinhSoLuongItemGioHang();
-            ViewBag.TongTien = TinhTongTien();
-            return PartialView();
-        }
+        //public ActionResult GioHangPartial()
+        //{
+        //    if(TinhSoLuongItemGioHang() == 0)
+        //    {
+        //        return PartialView();
+        //    }
+        //    ViewBag.TongSoLuong = TinhSoLuongItemGioHang();
+        //    ViewBag.TongTien = TinhTongTien();
+        //    return PartialView();
+        //}
     }
 }

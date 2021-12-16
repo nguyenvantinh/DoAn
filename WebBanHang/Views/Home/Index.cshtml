@@ -1,9 +1,10 @@
-﻿@model IEnumerable<WebBanHang.Models.SanPham>
+﻿@using WebBanHang.Models
+@model IEnumerable<SanPham>
 @{
     ViewBag.Title = "Home Page";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    IEnumerable<WebBanHang.Models.SanPham> lstSPNB = ViewBag.lstSPNB as IEnumerable<WebBanHang.Models.SanPham>;
-    IEnumerable<WebBanHang.Models.SanPham> lstSPMoi = ViewBag.lstSPM as IEnumerable<WebBanHang.Models.SanPham>;
+    Layout = "~/Views/Shared/ClientLayout.cshtml";
+    IEnumerable<SanPham> lstSPNB = ViewBag.lstSPNB as IEnumerable<SanPham>;
+    IEnumerable<SanPham> lstSPMoi = ViewBag.lstSPM as IEnumerable<SanPham>;
 }
 
 
@@ -21,46 +22,55 @@
                         <h2>@lstSPNB.ElementAt(0).TenSP</h2>
                         @*<p>Lorem ipsum dolor sit amet sed do eiusmod.</p>*@
                         <br />
-                        <div class="button"><span><a href="preview.html"> Add to Cart</a></span></div>
+                        <div class="button">
+                            <span>
+                                @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(0).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="listview_1_of_2 images_1_of_2" style="height:158px;">
                     <div class="listimg listimg_2_of_1">
-                        @*<a href="preview-5.html"><img src="~/Content/HinhAnhSP/oppo-reno6-rs.jpg" alt="" style="height:140px;" /></a>*@
                         <a href="preview-5.html"><img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(1).HinhAnh)" style="height:140px;"/></a>
                     </div>
                     <div class="text list_2_of_1">
                         <h2>@lstSPNB.ElementAt(1).TenSP</h2>
                         <br />
-                        @*<p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>*@
-                        <div class="button"><span><a href="preview-5.html"> Add to Cart</a></span></div>
+                        <div class="button">
+                            <span>
+                                @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(1).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="section group">
                 <div class="listview_1_of_2 images_1_of_2">
                     <div class="listimg listimg_2_of_1">
-                        @*<a href="preview-3.html"> <img src="~/Content/HinhAnhSP/samsung-galaxy-a52s-5g.jpg" alt="" /></a>*@
                         <a href="preview-3.html"> <img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(2).HinhAnh)" style="height:140px;" alt="" /></a>
                     </div>
                     <div class="text list_2_of_1">
                         <h2>@lstSPNB.ElementAt(2).TenSP</h2>
                         <br />
-                        @*<p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>*@
-                        <div class="button"><span><a href="preview-3.html"> Add to Cart</a></span></div>
+                        <div class="button">
+                            <span>
+                                @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(2).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <div class="listview_1_of_2 images_1_of_2">
                     <div class="listimg listimg_2_of_1">
-                        @*<a href="preview-6.html"><img src="~/Content/HinhAnhSP/xiaomi-11.jpg" alt="" /></a>*@
                         <a href="preview-6.html"><img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(3).HinhAnh)" style="height:140px;" alt="" /></a>
                     </div>
                     <div class="text list_2_of_1">
-                        @*<h2>Xiaomi 11T</h2>*@
                         <h2>@lstSPNB.ElementAt(3).TenSP</h2>
                         <br />
-                        @*<p>Lorem ipsum dolor sit amet, sed do eiusmod.</p>*@
-                        <div class="button"><span><a href="preview-6.html"> Add to Cart</a></span></div>
+                        <div class="button">
+                            <span>
+                                @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(3).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,24 +110,22 @@
     </div>
     <div class="section group">
         <div class="grid_1_of_4 images_1_of_4">
-            @*<a href="preview-3.html"><img src="~/Content/HinhAnhSP/iphone-11-xanhla.jpg" alt="" /></a>*@
             <a href="preview-3.html">
-            <img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(4).HinhAnh)" alt="" style="height: 212px; width: 212px;" />
+                <img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(4).HinhAnh)" alt="" style="height: 212px; width: 212px;" />
             </a>
-            @*<h2>iPhone 11 128GB </h2>*@
             <h2>@lstSPNB.ElementAt(4).TenSP </h2>
-            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>*@
             <p>@*<span class="strike">$528.22</span>*@<span class="price">@lstSPNB.ElementAt(4).DonGia.Value.ToString("N0") VND</span></p>
+            
             <div class="button bt">
                 <span>
                     <img src="~/Content/HinhAnhSP/cart.jpg" alt="" />
-                    <a href="preview-3.html" class="cart-button"> Add to Cart</a>
+                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(4).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
                 </span>
             </div>
             <div class="button">
-            <span>
-                <a href="preview-3.html" class="details">Details</a>
-            </span>
+                <span>
+                    <a href="preview-3.html" class="details">Details</a>
+                </span>
             </div>
         </div>
         @*img width ko dc vượt quá 212 px*@
@@ -126,25 +134,37 @@
                 <img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(5).HinhAnh)" style="height: 212px;" alt="" />
             </a>
             <h2>@lstSPNB.ElementAt(5).TenSP </h2>
-            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>*@
             <p><span class="price">@lstSPNB.ElementAt(5).DonGia.Value.ToString("N0") VND</span></p>
-            <div class="button bt"><span><img src="~/Content/HinhAnhSP/cart.jpg" alt="" /><a href="preview-3.html" class="cart-button"> Add to Cart</a></span> </div>
+            <div class="button bt">
+                <span>
+                    <img src="~/Content/HinhAnhSP/cart.jpg" alt="" />
+                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(5).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                </span>
+            </div>
             <div class="button"><span><a href="#" class="details">Details</a></span></div>
         </div>
         <div class="grid_1_of_4 images_1_of_4">
             <a href="preview-4.html"><img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(6).HinhAnh)" style="height: 212px;" alt="" /></a>
             <h2>@lstSPNB.ElementAt(6).TenSP </h2>
-            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>*@
             <p><span class="price">@lstSPNB.ElementAt(6).DonGia.Value.ToString("N0") VND</span></p>
-            <div class="button bt"><span><img src="~/Content/HinhAnhSP/cart.jpg" alt="" /><a href="preview-6.html" class="cart-button"> Add to Cart</a></span> </div>
+            <div class="button bt">
+                <span>
+                    <img src="~/Content/HinhAnhSP/cart.jpg" alt="" />
+                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(6).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                </span>
+            </div>
             <div class="button"><span><a href="#" class="details">Details</a></span></div>
         </div>
         <div class="grid_1_of_4 images_1_of_4">
             <a href="preview-4.html"><img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(7).HinhAnh)"  style="height: 212px;" alt="" /></a>
             <h2>@lstSPNB.ElementAt(7).TenSP </h2>
-            @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>*@
             <p><span class="price">@lstSPNB.ElementAt(7).DonGia.Value.ToString("N0") VND</span></p>
-            <div class="button bt"><span><img src="~/Content/HinhAnhSP/cart.jpg" alt="" /><a href="preview-3.html" class="cart-button"> Add to Cart</a></span> </div>
+            <div class="button bt">
+                <span>
+                    <img src="~/Content/HinhAnhSP/cart.jpg" alt="" />
+                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(7).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                </span>
+            </div>
             <div class="button"><span><a href="#" class="details">Details</a></span></div>
         </div>
     </div>
@@ -168,37 +188,15 @@
             <a href="preview-4.html"><img src="@Url.Content("/Content/HinhAnhSP/" + item.HinhAnh)" style="height: 212px;" alt="" /></a>
             <h2>@item.TenSP </h2>
             <p><span class="price">@item.DonGia.Value.ToString("N0") VND</span></p>
-            <div class="button bt"><span><img src="~/Content/HinhAnhSP/cart.jpg" alt="" /><a href="preview-3.html" class="cart-button"> Add to Cart</a></span> </div>
+            <div class="button bt">
+                <span>
+                    <img src="~/Content/HinhAnhSP/cart.jpg" alt="" />
+                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = item.MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                </span>
+            </div>
             <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
         </div>
         }
-
-        <!--<div class="grid_1_of_4 images_1_of_4">
-        <a href="preview-4.html"><img src="~/Content/HinhAnhSP/Vivo-V23e.jpg" alt="" /></a>-->
-        @*<div class="discount">
-            <span class="percentage">22%</span>
-        </div>*@
-        <!--<h2>Vivo-V23e </h2>
-    <p>-->
-        @*<span class="strike">$667.22</span>*@
-        <!--<span class="price">9,900,000 VND</span></p>
-        <div class="button"><span><img src="~/Content/HinhAnhSP/cart.jpg" alt="" /><a href="preview-4.html" class="cart-button"> Add to Cart</a></span></div>
-        <div class="button"><span><a href="preview-4.html" class="details">Details</a></span></div>
-    </div>
-    <div class="grid_1_of_4 images_1_of_4">
-        <a href="preview-2.html"><img src="~/Content/HinhAnhSP/oppo-a95.jpg" alt="" /></a>
-        <h2>Oppo A95 </h2>
-        <p><span class="price">13,000,000 VND</span></p>
-        <div class="button"><span><img src="~/Content/HinhAnhSP/cart.jpg" alt="" /><a href="preview-2.html" class="cart-button"> Add to Cart</a></span> </div>
-        <div class="button"><span><a href="preview-2.html" class="details">Details</a></span></div>
-    </div>
-    <div class="grid_1_of_4 images_1_of_4">
-        <a href="preview-2.html"> <img src="~/Content/HinhAnhSP/realme-c11.jpg" alt="" /></a>
-        <h2>Realme C11 </h2>
-        <p><span class="price">8,700,000 VND</span></p>
-        <div class="button"><span><img src="~/Content/HinhAnhSP/cart.jpg" alt="" /><a href="preview-2.html" class="cart-button"> Add to Cart</a></span> </div>
-        <div class="button"><span><a href="#" class="details">Details</a></span></div>
-    </div>-->
     </div>
 </div>
 <style>
