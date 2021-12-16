@@ -43,34 +43,19 @@ namespace WebBanHang.Controllers
             {
                 if(sp.SoLuongTon <= spCheck.soluong)
                 {
-                    //return Content("<script> alert(\"Sản phẩm đã hết hàng!\")</script>");
-                    //return RedirectToAction("ThongBao");
                     return Json(new { status = false, mes = "Sản phẩm đã hết hàng" });
                 }
-                //cập nhật số lượng của sp đó
                 spCheck.soluong++;
-                //cập nhật tổng tiền của sp đó
                 spCheck.ThanhTien = spCheck.soluong * spCheck.DonGia;
-                //Session["CartItems"] = TinhSoLuongItemGioHang();
-                //return PartialView("GioHangPartial");
                 return Json(new { status = true });
             }
             ItemGioHang newItem = new ItemGioHang(maSP);
             if (sp.SoLuongTon < newItem.soluong)
             {
-                //return Content("<script> alert(\"Sản phẩm đã hết hàng!\")</script>");
-                //return View("ThongBao");
                 return Json(new { status = false, mes = "Sản phẩm đã hết hàng" });
             }
             listGH.Add(newItem);
-            //ViewBag.SoLuongItemGioHang = TinhSoLuongItemGioHang();
-            //Session["CartItems"] = TinhSoLuongItemGioHang();
-            //return PartialView("GioHangPartial");
             return Json(new { status = true });
-        }
-        public ActionResult ThongBao()
-        {
-            return View();
         }
         public ActionResult TinhSoLuongItemGioHang()
         {
@@ -91,16 +76,5 @@ namespace WebBanHang.Controllers
             }
             return listGH.Sum(n => n.ThanhTien);
         }
-
-        //public ActionResult GioHangPartial()
-        //{
-        //    if(TinhSoLuongItemGioHang() == 0)
-        //    {
-        //        return PartialView();
-        //    }
-        //    ViewBag.TongSoLuong = TinhSoLuongItemGioHang();
-        //    ViewBag.TongTien = TinhTongTien();
-        //    return PartialView();
-        //}
     }
 }

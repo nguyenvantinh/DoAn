@@ -35,7 +35,7 @@
         });
     },
     getProductCount: function () {
-        debugger
+        //debugger
         $.ajax({
             url: '/GioHang/TinhSoLuongItemGioHang',
             type: 'GET',
