@@ -41,14 +41,14 @@
                 <a href="preview-3.html"><img src="@Url.Content("/Content/HinhAnhSP/" + item.HinhAnh)" style="height: 212px; width:180px;" alt="" /></a>
                 <h2>@item.TenSP</h2>
                 <p><span class="price">@item.DonGia.Value.ToString("N0")</span></p>
-                <div class="button">
-                    <span>
-                        <img src="/Content/ClientLayout/images/cart.jpg" alt="" />
-                        <a href="#" class="cart-button" id="DSAddCart" data-id="@item.MaSP">Add to Cart</a>
-                    </span>
-                    @*@Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = item.MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button", @id="DSAddCart", })*@
-                </div>
-                <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
+                    <div class="button">
+                        <span>
+                            <img src="/Content/ClientLayout/images/cart.jpg" alt="" />
+                            <a href="#" class="cart-button DSAddCart" id="DSAddCart" data-id="@item.MaSP">Add to Cart</a>
+                        </span>
+                        @*@Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = item.MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button", @id="DSAddCart", })*@
+                    </div>
+                    <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
             </div>
         }
     </div>

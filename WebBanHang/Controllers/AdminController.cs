@@ -58,10 +58,10 @@ namespace WebBanHang.Controllers
                             UserId = user.UserId,
                             TaiKhoan = user.TaiKhoan,
                             HoTen = user.HoTen,
-                            RoleName = user.Roles.Select(r => r.MaQuyen).ToList() // get ds các quyền của user 
+                            RoleName = user.Roles.Select(r => r.MaQuyen).ToList() // get ds các quyền của user, inited CustomMembershipUser in getuser 
                         };
 
-                        string userData = JsonConvert.SerializeObject(userModel);
+                        string userData = JsonConvert.SerializeObject(userModel); // nén
 
                         // tạo một dối tượng FormsAuthenticationTicket: authTicket
                         FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket

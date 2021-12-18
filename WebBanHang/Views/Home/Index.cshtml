@@ -6,8 +6,15 @@
     IEnumerable<SanPham> lstSPNB = ViewBag.lstSPNB as IEnumerable<SanPham>;
     IEnumerable<SanPham> lstSPMoi = ViewBag.lstSPM as IEnumerable<SanPham>;
 }
+<style>
+    .bt {
+        width: 51% !important;
+    }
+</style>
 
-
+@section jsFooter{
+    <script src="/Content/ClientLayout/js/Cart.js"></script>
+}
 @section header_bottom
 {
     <div class="header_bottom">
@@ -24,21 +31,21 @@
                         <br />
                         <div class="button">
                             <span>
-                                @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(0).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                                <a href="#" class="DSAddCart" data-id="@lstSPNB.ElementAt(0).MaSP">Add to Cart</a>
                             </span>
                         </div>
                     </div>
                 </div>
                 <div class="listview_1_of_2 images_1_of_2" style="height:158px;">
                     <div class="listimg listimg_2_of_1">
-                        <a href="preview-5.html"><img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(1).HinhAnh)" style="height:140px;"/></a>
+                        <a href="preview-5.html"><img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(1).HinhAnh)" style="height:140px;" /></a>
                     </div>
                     <div class="text list_2_of_1">
                         <h2>@lstSPNB.ElementAt(1).TenSP</h2>
                         <br />
                         <div class="button">
                             <span>
-                                @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(1).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                                <a href="#" class="DSAddCart" data-id="@lstSPNB.ElementAt(1).MaSP">Add to Cart</a>
                             </span>
                         </div>
                     </div>
@@ -54,7 +61,7 @@
                         <br />
                         <div class="button">
                             <span>
-                                @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(2).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                                <a href="#" class="DSAddCart" data-id="@lstSPNB.ElementAt(2).MaSP">Add to Cart</a>
                             </span>
                         </div>
                     </div>
@@ -68,7 +75,7 @@
                         <br />
                         <div class="button">
                             <span>
-                                @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(3).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                                <a href="#" class="DSAddCart" data-id="@lstSPNB.ElementAt(3).MaSP">Add to Cart</a>
                             </span>
                         </div>
                     </div>
@@ -115,11 +122,11 @@
             </a>
             <h2>@lstSPNB.ElementAt(4).TenSP </h2>
             <p>@*<span class="strike">$528.22</span>*@<span class="price">@lstSPNB.ElementAt(4).DonGia.Value.ToString("N0") VND</span></p>
-            
+
             <div class="button bt">
                 <span>
                     <img src="~/Content/HinhAnhSP/cart.jpg" alt="" />
-                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(4).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                    <a href="#" class="DSAddCart cart-button" data-id="@lstSPNB.ElementAt(4).MaSP">Add to Cart</a>
                 </span>
             </div>
             <div class="button">
@@ -138,7 +145,7 @@
             <div class="button bt">
                 <span>
                     <img src="~/Content/HinhAnhSP/cart.jpg" alt="" />
-                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(5).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                    <a href="#" class="DSAddCart cart-button" data-id="@lstSPNB.ElementAt(5).MaSP">Add to Cart</a>
                 </span>
             </div>
             <div class="button"><span><a href="#" class="details">Details</a></span></div>
@@ -150,19 +157,19 @@
             <div class="button bt">
                 <span>
                     <img src="~/Content/HinhAnhSP/cart.jpg" alt="" />
-                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(6).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                    <a href="#" class="DSAddCart cart-button" data-id="@lstSPNB.ElementAt(6).MaSP">Add to Cart</a>
                 </span>
             </div>
             <div class="button"><span><a href="#" class="details">Details</a></span></div>
         </div>
         <div class="grid_1_of_4 images_1_of_4">
-            <a href="preview-4.html"><img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(7).HinhAnh)"  style="height: 212px;" alt="" /></a>
+            <a href="preview-4.html"><img src="@Url.Content("/Content/HinhAnhSP/" + lstSPNB.ElementAt(7).HinhAnh)" style="height: 212px;" alt="" /></a>
             <h2>@lstSPNB.ElementAt(7).TenSP </h2>
             <p><span class="price">@lstSPNB.ElementAt(7).DonGia.Value.ToString("N0") VND</span></p>
             <div class="button bt">
                 <span>
                     <img src="~/Content/HinhAnhSP/cart.jpg" alt="" />
-                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = lstSPNB.ElementAt(7).MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
+                    <a href="#" class="DSAddCart cart-button" data-id="@lstSPNB.ElementAt(7).MaSP">Add to Cart</a>
                 </span>
             </div>
             <div class="button"><span><a href="#" class="details">Details</a></span></div>
@@ -184,23 +191,19 @@
     <div class="section group">
         @foreach (var item in lstSPMoi)
         {
-        <div class="grid_1_of_4 images_1_of_4">
-            <a href="preview-4.html"><img src="@Url.Content("/Content/HinhAnhSP/" + item.HinhAnh)" style="height: 212px;" alt="" /></a>
-            <h2>@item.TenSP </h2>
-            <p><span class="price">@item.DonGia.Value.ToString("N0") VND</span></p>
-            <div class="button bt">
-                <span>
-                    <img src="~/Content/HinhAnhSP/cart.jpg" alt="" />
-                    @Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = item.MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button"})
-                </span>
+            <div class="grid_1_of_4 images_1_of_4">
+                <a href="preview-4.html"><img src="@Url.Content("/Content/HinhAnhSP/" + item.HinhAnh)" style="height: 212px;" alt="" /></a>
+                <h2>@item.TenSP </h2>
+                <p><span class="price">@item.DonGia.Value.ToString("N0") VND</span></p>
+                <div class="button bt">
+                    <span>
+                        <img src="~/Content/HinhAnhSP/cart.jpg" alt="" />
+                        <a href="#" class="DSAddCart cart-button" data-id="@item.MaSP">Add to Cart</a>
+                    </span>
+                </div>
+                <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
             </div>
-            <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
-        </div>
         }
     </div>
 </div>
-<style>
-    .bt{
-        width: 51% !important;
-    }
-</style>
+

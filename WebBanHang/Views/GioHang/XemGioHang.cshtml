@@ -1,70 +1,138 @@
-﻿
+﻿@using WebBanHang.Models
+@model List<ItemGioHang>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
+    var a = 0;
 }
 <style>
-    .span_3_of_1{
+    .soluongitem {
+        width: 50px;
+    }
+    table tr td img {
+        width: 70px;
+    }
+    table p a{
+        cursor: pointer;
+    }
+    table p a:hover{
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .span_3_of_1 {
         padding: 0 !important;
     }
-    .rightsidebar{
+
+    .rightsidebar {
         margin: 0 !important;
     }
-    .span_1_of_2{
+
+    .span_1_of_2 {
         width: 100%;
         padding: 0;
     }
-    .cont-desc{
-        clear:none;
+    .content {
+        padding: 20px 0 0 0;
     }
-    table{
+    .cont-desc {
+        clear: none;
+    }
+
+    table {
         margin-top: 15px;
     }
-    table thead {
-        background: #dacee6;
-    }
-    .product-desc{
+
+        table thead {
+            background: #dacee6;
+        }
+
+    .product-desc {
         padding: 0;
-        width:145px;
+        width: 145px;
     }
+
         .product-desc h2 {
             background: #dac3ef;
         }
+    .text-center h2{
+        font-size: 30px;
+    }
+    .text-center h2 a{
+       text-decoration: none;
+       cursor: pointer;
+    }
+    .text-center h2 a:hover{
+       text-decoration: none;
+    }
+
 </style>
+@section jsFooter{
+    <script src="/Content/ClientLayout/js/Cart.js"></script>
+}
 <div class="content">
     <div class="section group">
         <div class="cont-desc span_1_of_2">
             <div class="product-desc">
                 <h2>Giỏ hàng</h2>
             </div>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">STT</th>
-                        <th scope="col">MSP</th>
-                        <th scope="col">Tên SP</th>
-                        <th scope="col">Hình Ảnh</th>
-                        <th scope="col">Số lượng</th>
-                        <th scope="col">Đơn giá</th>
-                        <th scope="col">Thành tiền</th>
-                        <th scope="col">Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>12</td>
-                        <td>Otto</td>
-                        <td>Otto</td>
-                        <td>Otto</td>
-                        <td>Otto</td>
-                        <td>Otto</td>
-                        <td>Sửa|Xóa</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
- 	</div>
+    </div>
 </div>
+@if (Model.Count() == 0)
+{
+<div class="text-center">
+    <h2 style="font-size: 30px;">Giỏ hàng rỗng, <a href="/">tiếp tục mua hàng!</a></h2>
+</div>
+}
+else
+{
+    <table class="table table-hover" id="tableGH">
+        <thead>
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">MaSP</th>
+                <th scope="col">Tên SP</th>
+                <th scope="col">Hình Ảnh</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Đơn giá</th>
+                <th scope="col">Thành tiền</th>
+                <th scope="col">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (var item in Model)
+            {
+                <tr>
+                    <th scope="row">@a++</th>
+                    <td>@item.MaSP</td>
+                    <td>@item.TenSP</td>
+                    <td><img src="@Url.Content("/Content/HinhAnhSP/"+item.HinhAnh)" alt="" /></td>
+                    <td>@item.soluong</td>
+                    <td>@item.DonGia</td>
+                    <td>@item.ThanhTien</td>
+                    <td>Sửa|Xóa</td>
+                </tr>
+            }*@
+
+            @for (var i = 0; i < Model.Count(); i++)
+            {
+                <tr id="row_@Model[i].MaSP">
+                    <th scope="row">@(i +1)</th>
+                    <td>@Model[i].MaSP</td>
+                    <td>@Model[i].TenSP</td>
+                    <td><img src="@Url.Content("/Content/HinhAnhSP/"+Model[i].HinhAnh)" alt="" /></td>
+                    <td>@Html.TextBox("soluong" +( i + 1), Model[i].soluong,new { @class = "soluongitem"})</td>
+                    <td>@Model[i].DonGia</td>
+                    <td>@Model[i].ThanhTien</td>
+                    <td>
+                        <a class="btn btn-default btn-xs update" data-id="@Model[i].MaSP" data-soluong="@(i +1)"> Cập nhật</a>
+                        <a class="btn btn-default btn-xs delete" data-id="@Model[i].MaSP"> Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
 
 

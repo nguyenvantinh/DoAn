@@ -49,7 +49,7 @@ namespace WebBanHang
             {
                 // bên AccountController đối tượng FormsAuthenticationTicket authTicket (có thuộc tính UserData,.. ) đã được tạo, mã hóa và làm value của cái Cookie trả về) >> ở đây phải giải mã cái value của cookie đó để lấy lại cái đối tượng FormsAuthenticationTicket authTicket 
 
-                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value); // giải nén
 
                 // userData bên AccountController đã được serialize >> ở đây phải Deserialize về object
                 var serializeModel = JsonConvert.DeserializeObject<CustomSerializeModel>(authTicket.UserData);
