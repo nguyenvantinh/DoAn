@@ -2,6 +2,7 @@
     init: function () {
         cart.registerEvents();
         cart.getProductCount();
+        cart.getTotalPrice();
     },
     registerEvents: function () {
         $('.DSAddCart').off('click').on('click', function (e) {
@@ -53,32 +54,39 @@
     },
 
     UpDate: function (productId, soluong) {
-        $.ajax({
-            url: '/GioHang/SuaGioHang',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                maSP: productId,
-                soluong: soluong
-            },
-            success: function (res) {
-                if (res.status) {
-                    cart.getProductCount();
-                    //toastr.success('Thêm vào giỏ thành công.');
-                    $.notify("Đã cập nhật", "success")
-                    setTimeout(function () {
-                        window.location.href = "/GioHang/XemGioHang";
-                    }, 3000);
+        if (soluong <= 0) {
+            alert("Số lượng không hợp lệ!");
+            return false;
+        }
+        else {
+            $.ajax({
+                url: '/GioHang/SuaGioHang',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    maSP: productId,
+                    soluong: soluong
+                },
+                success: function (res) {
+                    if (res.status) {
+                        cart.getProductCount();
+                        //toastr.success('Thêm vào giỏ thành công.');
+                        $.notify("Đã cập nhật", "success")
+                        setTimeout(function () {
+                            window.location.href = "/GioHang/XemGioHang";
+                        }, 3000);
+                    }
+                    else {
+                        $.notify(res.mes, "error")
+                        setTimeout(function () {
+                            window.location.href = "/GioHang/XemGioHang";
+                        }, 1000);
+
+                    }
                 }
-                else {
-                    $.notify(res.mes, "error")
-                    setTimeout(function () {
-                        window.location.href = "/GioHang/XemGioHang";
-                    }, 1000);
-                   
-                }
-            }
-        });
+            });
+
+        }
     },
 
     addItem: function (productId) {
@@ -119,6 +127,21 @@
     },
     setProductCount: function (num) {
         $('span.no_product').text("(" + num + " sản phẩm)");
+    },
+    getTotalPrice: function () {
+        $.ajax({
+            url: '/GioHang/TinhTongTien',
+            type: 'GET',
+            dataType: 'json',
+            success: function (res) {
+                if (res.status) {
+                    cart.setTotalPrice(res.TongTien.toLocaleString());
+                }
+            }
+        });
+    },
+    setTotalPrice: function (num) {
+        $('span#tongtien').text( num + " VND");
     }
 }
 cart.init();

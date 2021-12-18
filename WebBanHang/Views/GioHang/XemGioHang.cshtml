@@ -3,22 +3,38 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
-    var a = 0;
+
 }
 <style>
+    .main {
+        background: radial-gradient(#e6e1e1, transparent);
+    }
+
+    form {
+        background-color: #f9f5f5;
+    }
+
     .soluongitem {
         width: 50px;
     }
+
     table tr td img {
         width: 70px;
     }
-    table p a{
+
+    table tr:last-child {
+        border-bottom: 1px solid #e6dfdf;
+    }
+
+    table p a {
         cursor: pointer;
     }
-    table p a:hover{
-        cursor: pointer;
-        text-decoration: none;
-    }
+
+        table p a:hover {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
     .span_3_of_1 {
         padding: 0 !important;
     }
@@ -31,9 +47,11 @@
         width: 100%;
         padding: 0;
     }
+
     .content {
         padding: 20px 0 0 0;
     }
+
     .cont-desc {
         clear: none;
     }
@@ -54,17 +72,39 @@
         .product-desc h2 {
             background: #dac3ef;
         }
-    .text-center h2{
+
+    .text-center h2 {
         font-size: 30px;
     }
-    .text-center h2 a{
-       text-decoration: none;
-       cursor: pointer;
-    }
-    .text-center h2 a:hover{
-       text-decoration: none;
+
+        .text-center h2 a {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+            .text-center h2 a:hover {
+                text-decoration: none;
+            }
+
+    form h2 {
+        text-align: center;
+        margin-bottom: 9px;
+        font-weight: bold;
     }
 
+    .lb {
+        padding-left: 35px;
+        padding-top: 3px;
+    }
+
+    .form-group input {
+        width: 67%;
+    }
+
+    #divbtn {
+        text-align: right;
+        clear: both;
+    }
 </style>
 @section jsFooter{
     <script src="/Content/ClientLayout/js/Cart.js"></script>
@@ -78,15 +118,25 @@
         </div>
     </div>
 </div>
-@if (Model.Count() == 0)
+@if (Model.Count == 0 || Model == null)
 {
-<div class="text-center">
-    <h2 style="font-size: 30px;">Giỏ hàng rỗng, <a href="/">tiếp tục mua hàng!</a></h2>
-</div>
+    if (ViewBag.DatHang == 1)
+    {
+        <div class="text-center">
+            <h2 style="font-size: 30px;">Cảm ơn bạn đã mua hàng từ shop, đơn hàng sẽ được giao tới bạn trong thời gian sớm nhất. <a href="/">Tiếp tục mua hàng!</a></h2>
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <h2 style="font-size: 30px;">Giỏ hàng rỗng, <a href="/">tiếp tục mua hàng!</a></h2>
+        </div>
+    }
+
 }
 else
 {
-    <table class="table table-hover" id="tableGH">
+    <table class="table table-striped" id="tableGH">
         <thead>
             <tr>
                 <th scope="col">STT</th>
@@ -101,18 +151,18 @@ else
         </thead>
         <tbody>
             @*@foreach (var item in Model)
-            {
-                <tr>
-                    <th scope="row">@a++</th>
-                    <td>@item.MaSP</td>
-                    <td>@item.TenSP</td>
-                    <td><img src="@Url.Content("/Content/HinhAnhSP/"+item.HinhAnh)" alt="" /></td>
-                    <td>@item.soluong</td>
-                    <td>@item.DonGia</td>
-                    <td>@item.ThanhTien</td>
-                    <td>Sửa|Xóa</td>
-                </tr>
-            }*@
+                {
+                    <tr>
+                        <th scope="row">@a++</th>
+                        <td>@item.MaSP</td>
+                        <td>@item.TenSP</td>
+                        <td><img src="@Url.Content("/Content/HinhAnhSP/"+item.HinhAnh)" alt="" /></td>
+                        <td>@item.soluong</td>
+                        <td>@item.DonGia</td>
+                        <td>@item.ThanhTien</td>
+                        <td>Sửa|Xóa</td>
+                    </tr>
+                }*@
 
             @for (var i = 0; i < Model.Count(); i++)
             {
@@ -121,7 +171,7 @@ else
                     <td>@Model[i].MaSP</td>
                     <td>@Model[i].TenSP</td>
                     <td><img src="@Url.Content("/Content/HinhAnhSP/"+Model[i].HinhAnh)" alt="" /></td>
-                    <td>@Html.TextBox("soluong" +( i + 1), Model[i].soluong,new { @class = "soluongitem"})</td>
+                    <td>@Html.TextBox("soluong" + (i + 1), Model[i].soluong, new { @class = "soluongitem", @type = "number", @min = 1 })</td>
                     <td>@Model[i].DonGia</td>
                     <td>@Model[i].ThanhTien</td>
                     <td>
@@ -132,6 +182,60 @@ else
             }
         </tbody>
     </table>
+    <div style="text-align: right;margin-right: 70px;">
+        <p>Tổng tiền: <span id="tongtien"></span></p>
+    </div>
+    if (false)//đã đăng nhập > hiển thị form với tt từ session khách hàng
+    {
+
+    }
+    else
+    {
+        <div id="divDatHang" class="row">
+            <div class="col-md-9" style="margin-left: 145px;">
+                @using (Html.BeginForm("DatHang", "GioHang"))
+                {
+
+                    <h2>Thông tin giao hàng</h2>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-3 lb">Họ tên</label>
+                            <div class="col-md-9">
+                                <input type="text" name="HoTen" id="HoTen" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 lb">Email</label>
+                            <div class="col-md-9">
+                                <input type="text" name="Email" id="Email" value="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-md-3 lb">Địa chỉ</label>
+                            <div class="col-md-9">
+                                <input type="text" name="DiaChi" id="DiaChi" value="" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 lb">SĐT</label>
+                            <div class="col-md-9">
+                                <input type="text" name="SoDienThoai" id="SoDienThoai" value="" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divbtn">
+                        <input type="submit" name="btnDatHang" id="btnDatHang" value="Đặt Hàng" class="btn btn-primary" />
+                        @Html.ActionLink("Tiếp tục mua hàng", "Index", "Home", new { @class = "btn btn-success" })
+                    </div>
+                }
+            </div>
+
+
+        </div>
+        <div style="height: 20px;"></div>
+    }
 
 }
 

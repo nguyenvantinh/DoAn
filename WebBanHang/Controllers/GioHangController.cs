@@ -10,8 +10,12 @@ namespace WebBanHang.Controllers
     public class GioHangController : Controller
     {
         SellPhoneContext db = new SellPhoneContext();
-        public ActionResult XemGioHang()
+        public ActionResult XemGioHang(bool isDatHang = false)
         {
+            if (isDatHang)
+            {
+                ViewBag.DatHang = 1;
+            }
             var lstGioHang = LayGioHang();
             return View(lstGioHang);
         }
@@ -84,6 +88,49 @@ namespace WebBanHang.Controllers
             listGH.Remove(spCheck);
             return Json(new { status = true });
         }
+
+        [HttpPost]
+        public ActionResult DatHang(KhachHang kh)
+        {
+            KhachHang khachhang = new KhachHang();
+            if (Session["khachhang"] == null)
+            {
+                khachhang = kh;
+                db.KhachHangs.Add(khachhang);
+                db.SaveChanges();
+            }
+            else
+            {
+                khachhang = Session["khachhang"] as KhachHang;
+            }
+            //thêm đơn hàng
+            DonDatHang dondathang = new DonDatHang();
+            dondathang.MaKhachHang = khachhang.MaKhachHang;
+            dondathang.NgayDat = DateTime.Now;
+            dondathang.TinhTrangGiaoHang = false;
+            dondathang.UuDai = 0;
+            dondathang.DaHuy = false;
+            dondathang.DaThanhToan = false;
+            dondathang.DaXoa = false;
+            db.DonDatHangs.Add(dondathang);
+            db.SaveChanges();
+
+            // thêm chi tiết đơn đặt hàng
+            List<ItemGioHang> lstGioHang = LayGioHang();
+            foreach (var item in lstGioHang)
+            {
+                ChiTietDonDatHang ctdh = new ChiTietDonDatHang();
+                ctdh.MaDDH = dondathang.MaDDH;
+                ctdh.MaSP = item.MaSP;
+                ctdh.TenSP = item.TenSP;
+                ctdh.SoLuong = item.soluong;
+                ctdh.DonGia = item.DonGia;
+                db.ChiTietDonDatHangs.Add(ctdh);
+            }
+            db.SaveChanges();
+            Session["GioHang"] = null;
+            return RedirectToAction("XemGioHang", new { isDatHang = true});
+        }
         public ActionResult TinhSoLuongItemGioHang()
         {
             var listGH = Session["GioHang"] as List<ItemGioHang>;
@@ -94,14 +141,15 @@ namespace WebBanHang.Controllers
             var sum = listGH.Sum(n => n.soluong);
             return Json(new { status = true, Total = sum }, JsonRequestBehavior.AllowGet);
         }
-        public decimal TinhTongTien()
+        public ActionResult TinhTongTien()
         {
             var listGH = Session["GioHang"] as List<ItemGioHang>;
             if (listGH == null)
             {
-                return 0;
+                return Json(new { status = false, TongTien = 0 }, JsonRequestBehavior.AllowGet);
             }
-            return listGH.Sum(n => n.ThanhTien);
+           var sum = listGH.Sum(n => n.ThanhTien);
+            return Json(new { status = true, TongTien = sum }, JsonRequestBehavior.AllowGet);
         }
     }
 }
