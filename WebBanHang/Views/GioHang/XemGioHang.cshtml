@@ -6,6 +6,10 @@
 
 }
 <style>
+    .error {
+        color: red;
+        font-style: italic;
+    }
     .main {
         background: radial-gradient(#e6e1e1, transparent);
     }
@@ -106,9 +110,7 @@
         clear: both;
     }
 </style>
-@section jsFooter{
-    <script src="/Content/ClientLayout/js/Cart.js"></script>
-}
+
 <div class="content">
     <div class="section group">
         <div class="cont-desc span_1_of_2">
@@ -193,7 +195,7 @@ else
     {
         <div id="divDatHang" class="row">
             <div class="col-md-9" style="margin-left: 145px;">
-                @using (Html.BeginForm("DatHang", "GioHang"))
+                @using (Html.BeginForm("DatHang", "GioHang", FormMethod.Post, new { @id = "formDatHang" }))
                 {
 
                     <h2>Thông tin giao hàng</h2>
@@ -239,4 +241,36 @@ else
 
 }
 
-
+@section jsFooter{
+    <script src="/Content/ClientLayout/js/Cart.js"></script>
+    <script type="text/javascript">
+        $("#formDatHang").validate({
+            rules: {
+                HoTen: "required",
+                Email: {
+                    required: true,
+                    email: true
+                },
+                DiaChi: "required",
+                SoDienThoai: {
+                    required: true,
+                    number: true,
+                    maxlength: 10
+                }
+            },
+            messages: {
+                HoTen: "Bắt buộc nhập họ tên",
+                DiaChi: "Bắt buộc nhập địa chỉ",
+                Email: {
+                    required: "Bắt buộc nhập email",
+                    email: "Nhập đúng định dạng email"
+                },
+                SoDienThoai: {
+                    required: "Bắt buộc nhập số điện thoại",
+                    number: "Chỉ được nhập số",
+                    maxlength: "Tối đa 10 ký tự"
+                }
+            }
+        });
+    </script>
+}

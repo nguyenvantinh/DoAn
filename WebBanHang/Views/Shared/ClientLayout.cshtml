@@ -18,6 +18,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script src="~/Content/ClientLayout/js/script.js" type="text/javascript"></script>
     <script type="text/javascript" src="~/Content/ClientLayout/js/move-top.js"></script>
     <script type="text/javascript" src="~/Content/ClientLayout/js/easing.js"></script>
+
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
     <link href='//fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
@@ -228,7 +229,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
             //$().UItoTop({ easingType: 'easeOutQuart' });
 
-        });</script>
+        });
+    </script>
     <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
     <link href="~/Content/ClientLayout/css/flexslider.css" rel='stylesheet' type='text/css' />
     <script defer src="~/Content/ClientLayout/js/jquery.flexslider.js"></script>
@@ -246,6 +248,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });</script>
     <script src="~/Content/js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     @RenderSection("jsFooter", required: false)
     <script src="~/Scripts/notify.min.js"></script>
 </body>
