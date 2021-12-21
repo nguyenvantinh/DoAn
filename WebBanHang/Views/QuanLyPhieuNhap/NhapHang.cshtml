@@ -8,6 +8,9 @@
     .wrapper {
         min-height: 477px;
     }
+    .table > tbody > tr > td {
+        color: #191515;
+    }
 </style>
 <div class="form-w3layouts">
     <div class="row">
@@ -20,65 +23,69 @@
 
                     @using (Html.BeginForm())
                     {
-        <div class="row">
-            <div class="ThongTinPhieuNhap col-md-12">
-                <div class="col-md-2">
-                    Nhà cung cấp
-                </div>
-                <div class="col-md-5">
-                    <select class="MaNCC" name="MaNCC">
-                        @foreach (var item in lstNCC)
-                        {
-        <option value="@item.MaNCC">@item.TenNCC</option>}
-                    </select>
-                </div>
-            </div>
-        </div>
+                        <div class="row">
+                            <div class="ThongTinPhieuNhap col-md-12">
+                                <div class="col-md-2">
+                                    Nhà cung cấp
+                                </div>
+                                <div class="col-md-5">
+                                    <select class="MaNCC" name="MaNCC">
+                                        @foreach (var item in lstNCC)
+                                        {
+                                            <option value="@item.MaNCC">@item.TenNCC</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="clearfix"></div>
                                         <br />
-                                                        <div class="row">
-                                                            <div class="ThongTinPhieuNhap col-md-12">
-                                                                <div class="col-md-2">
-                                                                    Ngày nhập:
-                                                                </div>
-                                                                <div class="col-md-5">
-                                                                    @*Lưu ý phải có type = "text" mới lấy được ngày*@
-                                                                    <input type="datetime" name="NgayNhap" id="datett">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                                        <div class="clearfix"></div>
-                                                                                        <br /> @*Bảng chi tiết nhập hàng*@
-                                                                                                        <table class="table tblChiTietPhieuNhap">
-                                                                                                            @{ IEnumerable<SanPham> lstSanPham = ViewBag.ListSanPham as IEnumerable<SanPham>;}
-                                                                                                            <tr class="trAppend" style="display:none">
-                                                                                                                <td>
-                                                                                                                    <select class="ddlSanPham" name="">
-                                                                                                                        @foreach (var item in lstSanPham)
-                                                                                                                        {
-                                                                                                        <option value="@item.MaSP">@item.TenSP</option>}
-                                                                                                                    </select>
-                                                                                                                </td>
-                                                                                                                <td>
-                                                                                                                    <input name="" class="txtDonGia" value="0" />
-                                                                                                                </td>
-                                                                                                                <td>
-                                                                                                                    <input name="" class="txtSoLuong" value="0" />
-                                                                                                                </td>
-                                                                                                                <td>
-                                                                                                                    <input class="btnDelete btn btn-danger" style="width:30px;height:30px" value="-" />
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                            <tr class="trFirstChild" data-id="-1">
-                                                                                                                <td>Sản phẩm</td>
-                                                                                                                <td>Đơn giá nhập</td>
-                                                                                                                <td>Số lượng nhập</td>
-                                                                                                                <td></td>
-                                                                                                            </tr>
-                                                                                                        </table>
-                                                                                                                        <input type="button" class="btn btn-success" id="btnAdd" style="width:40px;height:30px;text-align:center" value="+" />
-                                                                                                                                        <input type="submit" class="btn btn-primary" id="btnNhapHang" style="width:120px;height:30px;text-align:center" value="Nhập hàng" />}
-
+                        <div class="row">
+                            <div class="ThongTinPhieuNhap col-md-12">
+                                <div class="col-md-2">
+                                    Ngày nhập:
+                                </div>
+                                <div class="col-md-5">
+                                    @*Lưu ý phải có type = "text" mới lấy được ngày*@
+                                    <input type="datetime" name="NgayNhap" id="datett" style="width: 169px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <br /> 
+                        @*Bảng chi tiết nhập hàng*@
+                        <table class="table tblChiTietPhieuNhap">
+                            @{ IEnumerable<SanPham> lstSanPham = ViewBag.ListSanPham as IEnumerable<SanPham>;}
+                            <tr class="trAppend" style="display:none">
+                                <td>
+                                    <select class="ddlSanPham" name="">
+                                        @foreach (var item in lstSanPham)
+                                        {
+                                            <option value="@item.MaSP">@item.TenSP</option>
+                                        }
+                                    </select>
+                                </td>
+                                <td>
+                                    <input name="" class="txtDonGia" value="0" />
+                                </td>
+                                <td>
+                                    <input name="" class="txtSoLuong" value="0" />
+                                </td>
+                                <td>
+                                    <input class="btnDelete btn btn-danger" style="width:30px;height:30px" value="-" />
+                                </td>
+                            </tr>
+                            <tr class="trFirstChild" data-id="-1">
+                                <td>Sản phẩm</td>
+                                <td>Đơn giá nhập</td>
+                                <td>Số lượng nhập</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                         <input type="button" class="btn btn-success" id="btnAdd" style="width:40px;height:30px;text-align:center" value="+" />
+                         <input type="submit" class="btn btn-primary" id="btnNhapHang" style="width:120px;height:30px;text-align:center" value="Nhập hàng" />
+                         <a class="btn btn-primary" id="btnNhapHang" style="height:30px;text-align:center">Thoát</a>
+                    }
                 </div>
             </section>
         </div>
@@ -90,19 +97,15 @@
             dateFormat: 'dd/mm/yy',
             changeMonth: true,
             changeYear: true
-
         });
         $("#btnAdd").click(function () {
-
-            // Lấy id của tr cuối cùng thuộc thẻ table có class = tblChiTietPhieuNhap
-            //Bước 4: Phương thức find là tìm đến thẻ nào đó: ở đây là thẻ tr (:last-child) là thẻ tr cuối cùng trong thẻ tblChiTietPhieuNhap
             var id_cuoi = $(".tblChiTietPhieuNhap").find("tr:last-child").attr("data-id");
             i = parseInt(id_cuoi) + 1;
-            //Bước 1: Nội dung phía trong thẻ trAppend
+            // Nội dung phía trong thẻ trAppend
             var tdnoidung = $(".trAppend").html();
-            //Bước 2:Tạo 1 thẻ tr bao ngoài nội dung
+            // Tạo 1 thẻ tr bao ngoài nội dung
             var trnoidung = "<tr class=\"trAppended\" data-id=\"" + i + "\">" + tdnoidung + "</tr>";
-            ////Bước 3: Lấy thẻ table append vào 1 tr
+            // append vào table
             $(".tblChiTietPhieuNhap").append(trnoidung);
             loadIDLENTHE();
         });
@@ -159,6 +162,10 @@
                 alert("Số lượng không hợp lệ!");
                 loi++
             }
+            if ($(".trAppended").length == 0) {
+                alert("Bạn chưa chọn sản phẩm nào!");
+                loi++
+            }
             if (loi > 0) {
                 //ngăn không cho submit về server
                 return false;
@@ -167,25 +174,26 @@
 
         // Kiểm tra đơn giá
         function kiemtraDonGia() {
-            var bl = true;
+            var kt = true;
             $(".txtDonGia").each(function () {
                 var giatri = $(this).val();
-                if (isNaN(giatri) == true) {
+                if (isNaN(giatri) == true || giatri < 0) {
 
-                    bl = false;
+                    kt = false;
                 }
             });
-            return bl;
+            return kt;
         }
         function kiemTraSoLuong() {
-            var bl = true;
+            var kt = true;
             $(".txtSoLuong").each(function () {
                 var giatri = $(this).val();
-                if (isNaN(giatri) == true) {
+                if (isNaN(giatri) == true || giatri < 0) {
 
-                    bl = false;
+                    kt = false;
                 }
             });
-            return bl;
-        }</script>
+            return kt;
+        }
+    </script>
 }

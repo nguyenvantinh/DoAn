@@ -154,6 +154,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\QuanLyDonHangController.cs" />
     <Compile Include="Controllers\QuanLyPhieuNhapController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
     <Compile Include="Controllers\RedirectingAction.cs" />
@@ -1193,6 +1194,12 @@
     <Content Include="Views\GioHang\ThongBao.cshtml" />
     <Content Include="Views\Shared\ClientLayout.cshtml" />
     <Content Include="Views\QuanLyPhieuNhap\NhapHang.cshtml" />
+    <Content Include="Views\QuanLyPhieuNhap\DSSPHetHang.cshtml" />
+    <Content Include="Views\QuanLyPhieuNhap\NhapHangDon.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ChoDuyet.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DuyetDonHang.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DaGiaoChuaThanhToan.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DaGiaoDaThanhToan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

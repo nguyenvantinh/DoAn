@@ -1,0 +1,52 @@
+﻿@using WebBanHang.Models;
+@model IEnumerable<SanPham>
+@{
+    ViewBag.Title = "DSSPHetHang";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="table-agile-info">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Sản phẩm sắp hết hàng
+        </div>
+        
+        <div>
+            @using (Html.BeginForm("DeleteMulti", "QuanLySanPham", FormMethod.Post))
+            {
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <th>Cấu hình</th>
+                            <th>SL tồn</th>
+                            <th>Hình ảnh</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr id="row_@item.MaSP">
+                                <td><a href="/QuanLySanPham/XemChiTiet/@item.MaSP">@item.TenSP</a></td>
+                                <td>@Html.Raw(item.CauHinh.Substring(0, 170))</td>
+                                @*<td>@item.NgayCapNhap.Value.ToString("dd/MM/yyyy")</td>*@
+                                <td>@item.SoLuongTon</td>
+                                <td>@Html.Raw("<img src=\"../Content/HinhAnhSP/" + item.HinhAnh + "\">")</td>
+                                <td>
+                                    @Html.ActionLink("Nhập hàng", "NhapHangDon", new { id = item.MaSP }, new { @target = "_blank", @class="btn btn-primary" })
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            }
+        </div>
+        <div style="float:left;">
+            @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @Keyword = ViewBag.Keyword, @hienthi = ViewBag.hienthi }))*@
+            @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page, @Keyword = ViewBag.Keyword }))*@
+        </div>
+    </div>
+</div>
+

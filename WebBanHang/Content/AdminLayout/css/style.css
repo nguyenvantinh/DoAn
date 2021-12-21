@@ -1452,9 +1452,10 @@ section#tables  p {
 	padding: 15px!important;
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
-	font-size: 0.9em;
-	color: #999;
-	border-top: none !important;
+    font-size: 0.9em;
+    /*color: #999;*/
+    color: #0e0e0e;
+    border-top: none !important;
 }
 .tab-content > .active {
 	display: block;

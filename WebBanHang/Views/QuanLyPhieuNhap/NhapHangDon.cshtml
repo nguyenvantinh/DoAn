@@ -1,0 +1,109 @@
+﻿@using WebBanHang.Models;
+@model SanPham
+
+@{
+    ViewBag.Title = "NhapHangDon";
+    Layout = "~/Views/Layout/AdminLayout.cshtml"; 
+}
+
+<div class="form-w3layouts">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Nhập hàng cho sản phẩm <b style="color: rgb(192,0,0)">@Model.TenSP</b>
+                </header>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="imgSP">
+                                <img src="@Url.Content("~/Content/HinhAnhSP/"+Model.HinhAnh)" />
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="ttSP">
+                                <h3>Hãng sản xuất: @Model.NhaSanXuat.TenNSX</h3>
+                                <h3>Loại sản phẩm: @Model.LoaiSanPham.TenLoai</h3>
+                                <h3>Số lượng tồn: @Model.SoLuongTon</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <fieldset>
+                        <legend>Thông tin nhập hàng</legend>
+                    </fieldset>
+                    @using (Html.BeginForm("NhapHangDon", "QuanLyPhieuNhap"))
+                    {
+                        @Html.Hidden("MaSP", Model.MaSP)
+                        <div class="row">
+                            <div class="col-md-4">
+                                @{var lstNCC = (SelectList)ViewBag.MaNCC;}
+                                Nhà cung cấp: @Html.DropDownList("MaNCC", lstNCC, new { @class = "MaNCC" })
+                            </div>
+                            <div class="col-md-4">
+                                Số lượng nhập : @Html.TextBox("SoLuongNhap")
+                            </div>
+                            <div class="col-md-4">
+                                Đơn giá nhập: @Html.TextBox("DonGiaNhap")
+                            </div>
+                            <div class="col-md-4">
+
+                            </div>
+                        </div>
+                        <div class="clear right" style="text-align:right;">
+                            <br />
+                            <input type="submit" class="btn btn-primary" value="Nhập hàng" id="btnNhapHang"/>
+                        </div>
+                    }
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<style>
+    .imgSP {
+        border: 1px solid #999999;
+        background-color: #fff;
+        padding: 15px;
+    }
+</style>
+@section scripts{
+    <script>
+        $("#btnNhapHang").click(function () {
+            debugger
+            loi = 0
+            if (kiemtraDonGia() == false) {
+
+                alert("Đơn giá không hợp lệ!");
+                loi++;
+            }
+            if (kiemTraSoLuong() == false) {
+                alert("Số lượng không hợp lệ!");
+                loi++
+            }
+            if (loi > 0) {
+                //ngăn không cho submit về server
+                return false;
+            }
+        });
+
+        // Kiểm tra đơn giá
+        function kiemtraDonGia() {
+                var giatri = $("#DonGiaNhap").val();
+                if (isNaN(giatri) == true || giatri < 0) {
+                    return false;
+                } else {
+                    return true;
+                }
+        }
+        function kiemTraSoLuong() {
+                var giatri = $("#SoLuongNhap").val();
+            if (isNaN(giatri) == true || giatri < 0) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+}
