@@ -64,10 +64,10 @@
     <EntitySetMapping Name="LoaiSanPhams">
       <EntityTypeMapping TypeName="SellPhoneModel.LoaiSanPham">
         <MappingFragment StoreEntitySet="LoaiSanPham">
+          <ScalarProperty Name="ToPrice" ColumnName="ToPrice" />
+          <ScalarProperty Name="FromPrice" ColumnName="FromPrice" />
           <ScalarProperty Name="MaLoaiSP" ColumnName="MaLoaiSP" />
           <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
-          <ScalarProperty Name="Icon" ColumnName="Icon" />
-          <ScalarProperty Name="BiDanh" ColumnName="BiDanh" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

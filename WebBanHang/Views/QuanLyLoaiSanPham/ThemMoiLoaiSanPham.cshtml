@@ -1,0 +1,66 @@
+﻿@model WebBanHang.Models.LoaiSanPham
+@{
+    ViewBag.Title = "Thêm mới loại sản phẩm";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<style>
+    .error {
+        color: red;
+        font-weight: unset;
+        font-size: 14px;
+    }
+</style>
+<div class="form-w3layouts">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <section class="panel">
+                <header class="panel-heading">
+                    Thêm mới loại sản phẩm
+                </header>
+                <div class="panel-body">
+                    <div class="form">
+                        @using (Html.BeginForm("ThemMoiLoaiSanPham", "QuanLyLoaiSanPham", FormMethod.Post, new { @class = "cmxform form-horizontal " }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="col-lg-8 col-md-8 col-sm-8" style="margin-left: 6%;">
+                               
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.TenLoai, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.EditorFor(model => model.TenLoai, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TenLoai, "", new { @class = "text-danger" })
+                                    </div>
+                                   
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FromPrice, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.EditorFor(model => model.FromPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FromPrice, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                               
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ToPrice, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.EditorFor(model => model.ToPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ToPrice, "", new { @class = "text-danger" })
+                                    </div>
+                                   
+                                </div>
+                               
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary" type="submit" id="submit">Save</button>
+                                <a class="btn btn-default" href="/QuanLyLoaiSanPham/Index" id="cancel">Cancel</a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

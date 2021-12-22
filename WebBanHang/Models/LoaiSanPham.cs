@@ -22,8 +22,8 @@ namespace WebBanHang.Models
     
         public int MaLoaiSP { get; set; }
         public string TenLoai { get; set; }
-        public string Icon { get; set; }
-        public string BiDanh { get; set; }
+        public Nullable<decimal> FromPrice { get; set; }
+        public Nullable<decimal> ToPrice { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SanPham> SanPhams { get; set; }

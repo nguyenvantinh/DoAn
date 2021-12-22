@@ -61,8 +61,8 @@
     </Key>
     <Property Name="MaLoaiSP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenLoai" Type="nvarchar" MaxLength="100" />
-    <Property Name="Icon" Type="nvarchar(max)" />
-    <Property Name="BiDanh" Type="nvarchar" MaxLength="50" />
+    <Property Name="FromPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="ToPrice" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="NguoiDung">
     <Key>
@@ -271,8 +271,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SanPham__MaLoaiS__3E52440B">
-    <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="0..1" />
+  <Association Name="FK__SanPham__MaLoaiS__71D1E811">
+    <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="LoaiSanPham">
@@ -283,8 +285,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SanPham__MaNCC__3C69FB99">
-    <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1" />
+  <Association Name="FK__SanPham__MaNCC__6FE99F9F">
+    <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NhaCungCap">
@@ -295,8 +299,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SanPham__MaNSX__3D5E1FD2">
-    <End Role="NhaSanXuat" Type="Self.NhaSanXuat" Multiplicity="0..1" />
+  <Association Name="FK__SanPham__MaNSX__70DDC3D8">
+    <End Role="NhaSanXuat" Type="Self.NhaSanXuat" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NhaSanXuat">
@@ -358,15 +364,15 @@
       <End Role="NhaCungCap" EntitySet="NhaCungCap" />
       <End Role="PhieuNhap" EntitySet="PhieuNhap" />
     </AssociationSet>
-    <AssociationSet Name="FK__SanPham__MaLoaiS__3E52440B" Association="Self.FK__SanPham__MaLoaiS__3E52440B">
+    <AssociationSet Name="FK__SanPham__MaLoaiS__71D1E811" Association="Self.FK__SanPham__MaLoaiS__71D1E811">
       <End Role="LoaiSanPham" EntitySet="LoaiSanPham" />
       <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>
-    <AssociationSet Name="FK__SanPham__MaNCC__3C69FB99" Association="Self.FK__SanPham__MaNCC__3C69FB99">
+    <AssociationSet Name="FK__SanPham__MaNCC__6FE99F9F" Association="Self.FK__SanPham__MaNCC__6FE99F9F">
       <End Role="NhaCungCap" EntitySet="NhaCungCap" />
       <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>
-    <AssociationSet Name="FK__SanPham__MaNSX__3D5E1FD2" Association="Self.FK__SanPham__MaNSX__3D5E1FD2">
+    <AssociationSet Name="FK__SanPham__MaNSX__70DDC3D8" Association="Self.FK__SanPham__MaNSX__70DDC3D8">
       <End Role="NhaSanXuat" EntitySet="NhaSanXuat" />
       <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>

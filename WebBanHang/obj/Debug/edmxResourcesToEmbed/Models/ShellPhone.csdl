@@ -69,9 +69,9 @@
     </Key>
     <Property Name="MaLoaiSP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenLoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="BiDanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="SanPhams" Relationship="Self.FK__SanPham__MaLoaiS__3E52440B" FromRole="LoaiSanPham" ToRole="SanPham" />
+    <Property Name="FromPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="ToPrice" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="NguoiDung">
     <Key>

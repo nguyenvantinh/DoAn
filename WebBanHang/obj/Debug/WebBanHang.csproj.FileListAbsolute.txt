@@ -86,7 +86,6 @@ D:\visual studio\WebBanHang\WebBanHang\bin\System.Web.WebPages.Razor.xml
 D:\visual studio\WebBanHang\WebBanHang\bin\Newtonsoft.Json.xml
 D:\visual studio\WebBanHang\WebBanHang\bin\Antlr3.Runtime.pdb
 D:\visual studio\WebBanHang\WebBanHang\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\visual studio\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csprojAssemblyReference.cache
 D:\visual studio\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CoreCompileInputs.cache
 D:\visual studio\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CopyComplete
 D:\visual studio\WebBanHang\WebBanHang\obj\Debug\WebBanHang.dll

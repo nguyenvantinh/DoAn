@@ -155,6 +155,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\QuanLyDonHangController.cs" />
+    <Compile Include="Controllers\QuanLyLoaiSanPhamController.cs" />
     <Compile Include="Controllers\QuanLyNguoiDungController.cs" />
     <Compile Include="Controllers\QuanLyPhieuNhapController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
@@ -188,6 +189,7 @@
       <DependentUpon>ShellPhone.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginView.cs" />
+    <Compile Include="Models\MetaData\LoaiSanPham.cs" />
     <Compile Include="Models\MetaData\NguoiDung.cs" />
     <Compile Include="Models\MetaData\SanPham.cs" />
     <Compile Include="Models\NguoiDung.cs">
@@ -1205,6 +1207,9 @@
     <Content Include="Views\QuanLyNguoiDung\Index.cshtml" />
     <Content Include="Views\QuanLyNguoiDung\ThemMoiNguoiDung.cshtml" />
     <Content Include="Views\QuanLyNguoiDung\SuaThongTinNguoiDung.cshtml" />
+    <Content Include="Views\QuanLyLoaiSanPham\Index.cshtml" />
+    <Content Include="Views\QuanLyLoaiSanPham\ThemMoiLoaiSanPham.cshtml" />
+    <Content Include="Views\QuanLyLoaiSanPham\SuaThongTinLoaiSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
