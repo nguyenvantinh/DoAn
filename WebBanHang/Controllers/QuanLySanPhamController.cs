@@ -17,14 +17,14 @@ namespace WebBanHang.Controllers
         // GET: QuanLySanPham
         [CustomAuthorize(Roles = "QLSanPham")]
         [HttpGet]
-        public ActionResult Index(int Page = 1, int PageSize = 10, string Keyword="", int hienthi = 0)
+        public ActionResult Index(int Page = 1, int PageSize = 10, string Keyword="")
         {
             ViewBag.Keyword = Keyword;
-            ViewBag.hienthi = hienthi;
-            if (hienthi != 0)
-            {
-                PageSize = hienthi;
-            }
+            //ViewBag.hienthi = hienthi;
+            //if (hienthi != 0)
+            //{
+            //    PageSize = hienthi;
+            //}
             IQueryable<SanPham> lstSanPham = dbContext.SanPhams.Where(x => x.DaXoa == false);
             if (!string.IsNullOrEmpty(Keyword))
             {
