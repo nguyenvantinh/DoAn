@@ -90,3 +90,4 @@ D:\visual studio\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CoreCompileIn
 D:\visual studio\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csproj.CopyComplete
 D:\visual studio\WebBanHang\WebBanHang\obj\Debug\WebBanHang.dll
 D:\visual studio\WebBanHang\WebBanHang\obj\Debug\WebBanHang.pdb
+D:\visual studio\WebBanHang\WebBanHang\obj\Debug\WebBanHang.csprojAssemblyReference.cache
