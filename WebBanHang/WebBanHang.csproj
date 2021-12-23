@@ -154,9 +154,12 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\PhanQuyenController.cs" />
+    <Compile Include="Controllers\QuanLyNhaCungCapController.cs" />
     <Compile Include="Controllers\QuanLyDonHangController.cs" />
     <Compile Include="Controllers\QuanLyLoaiSanPhamController.cs" />
     <Compile Include="Controllers\QuanLyNguoiDungController.cs" />
+    <Compile Include="Controllers\QuanLyNhaSanXuatController.cs" />
     <Compile Include="Controllers\QuanLyPhieuNhapController.cs" />
     <Compile Include="Controllers\QuanLyQuyenController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
@@ -192,6 +195,8 @@
     <Compile Include="Models\LoginView.cs" />
     <Compile Include="Models\MetaData\LoaiSanPham.cs" />
     <Compile Include="Models\MetaData\NguoiDung.cs" />
+    <Compile Include="Models\MetaData\NhaCungCap.cs" />
+    <Compile Include="Models\MetaData\NhaSanXuat.cs" />
     <Compile Include="Models\MetaData\Quyen.cs" />
     <Compile Include="Models\MetaData\SanPham.cs" />
     <Compile Include="Models\NguoiDung.cs">
@@ -1215,6 +1220,13 @@
     <Content Include="Views\QuanLyQuyen\Index.cshtml" />
     <Content Include="Views\QuanLyQuyen\ThemMoiQuyen.cshtml" />
     <Content Include="Views\QuanLyQuyen\SuaThongTinQuyen.cshtml" />
+    <Content Include="Views\QuanLyNhaSanXuat\ThemMoiNhaSanXuat.cshtml" />
+    <Content Include="Views\QuanLyNhaSanXuat\SuaThongTinNhaSanXuat.cshtml" />
+    <Content Include="Views\QuanLyNhaSanXuat\Index.cshtml" />
+    <Content Include="Views\QuanLyNhaCungCap\Index.cshtml" />
+    <Content Include="Views\QuanLyNhaCungCap\ThemMoiNhaCungCap.cshtml" />
+    <Content Include="Views\QuanLyNhaCungCap\SuaThongTinNhaCungCap.cshtml" />
+    <Content Include="Views\PhanQuyen\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

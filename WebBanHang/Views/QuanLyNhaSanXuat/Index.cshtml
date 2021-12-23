@@ -1,34 +1,31 @@
 ﻿@using PagedList.Mvc;
-@model PagedList.IPagedList<WebBanHang.Models.NguoiDung>
+@model PagedList.IPagedList<WebBanHang.Models.NhaSanXuat>
 @{
-    ViewBag.Title = "Quản lý người dùng";
+    ViewBag.Title = "Quản lý nhà sản xuất";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
 
 <div class="table-agile-info">
     <div class="panel panel-default">
-        @using (Html.BeginForm("Index", "QuanLyNguoiDung", FormMethod.Get))
+        @using (Html.BeginForm("Index", "QuanLyNhaSanXuat", FormMethod.Get))
         {
-            <div class="panel-heading">
-                Danh sách người dùng
-                <input type="text" placeholder="Nhập từ khóa tìm kiếm" name="Keyword" id="InputSearch" value="@ViewBag.Keyword" class="form-control1" />
-                <input type="submit" class="btn btn-default act-search" id="btn-find" value="Tìm kiếm" />
-                <button type="button" class="btn btn-success" id="btn-add-sp" style="margin-top:13px; float:right;" onclick="location.href='@Url.Action("ThemMoiNguoiDung", "QuanLyNguoiDung")'"><i class="fa fa-plus"></i> Thêm mới</button>
-            </div>
+        <div class="panel-heading">
+            Danh sách nhà sản xuất
+            <input type="text" placeholder="Nhập từ khóa tìm kiếm" name="Keyword" id="InputSearch" value="@ViewBag.Keyword" class="form-control1" />
+            <input type="submit" class="btn btn-default act-search" id="btn-find" value="Tìm kiếm" />
+            <button type="button" class="btn btn-success" id="btn-add-sp" style="margin-top:13px; float:right;" onclick="location.href='@Url.Action("ThemMoiNhaSanXuat", "QuanLyNhaSanXuat")'"><i class="fa fa-plus"></i> Thêm mới</button>
+        </div>
         }
-        
+
         <div>
-            @using (Html.BeginForm("DeleteMulti", "QuanLyNguoiDung", FormMethod.Post))
+            @using (Html.BeginForm("DeleteMulti", "QuanLyNhaSanXuat", FormMethod.Post))
             {
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Tài khoản</th>
-                            <th>Họ tên</th>
-                            @*<th>Địa chỉ</th>*@
-                            <th>Email</th>
-                            <th>Số điện thoại</th>
-                            <th></th>
+                            <th>Tên nhà sản xuất</th>
+                            <th>Thông tin</th>
+                            <th>Logo</th>
                             <th>
                                 <button type="submit" id="btnDelete" class="btn btn-danger btn-xs" style="margin-left: 50px; color: #f5eeee"><i class="fa fa-trash-o"></i>Xóa</button>
                                 <input class="checkAll" type="checkbox" name="lstID" />
@@ -38,24 +35,20 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr id="row_@item.MaNguoiDung">
-                                <td>@item.TaiKhoan</td>
-                                <td>@item.HoTen</td>
-                                @*<td>@item.DiaChi</td>*@
-                                <td>@item.Email</td>
-                                <td>@item.SoDienThoai</td>
-                                <td> <a class="btn btn-default btn-xs" href="/PhanQuyen/Index/@item.MaNguoiDung">Phân quyền</a>
-                                </td>
+                            <tr id="row_@item.MaNSX">
+                                <td>@item.TenNSX</td>
+                                <td>@item.ThongTin</td>
+                                <td>@Html.Raw("<img src=\"../Content/HinhAnhSP/" + item.Logo + "\">")</td>
                                 <td>
-                                    <a class="btn btn-default btn-xs" href="/QuanLyNguoiDung/SuaThongTinNguoiDung/@item.MaNguoiDung"><i class="fa fa-edit"></i> Sửa</a>
+                                    <a class="btn btn-default btn-xs" href="/QuanLyNhaSanXuat/SuaThongTinNhaSanXuat/@item.MaNSX"><i class="fa fa-edit"></i> Sửa</a>
 
-                                    @Ajax.ActionLink("Xóa", "XoaNguoiDung", new { @id = item.MaNguoiDung }, new AjaxOptions
+                                    @Ajax.ActionLink("Xóa", "XoaNhaSanXuat", new { @id = item.MaNSX }, new AjaxOptions
                                {
                                    Confirm = "Bạn có muốn xóa bản ghi này?",
-                                   OnComplete = "$('#row_" + item.MaNguoiDung + "').remove()",
+                                   OnComplete = "$('#row_" + item.MaNSX + "').remove()",
                                    HttpMethod = "Delete"
                                }, new { @class = "btn btn-default btn-xs xoa" })
-                                    <input class="check" type="checkbox" name="itemID" value="@item.MaNguoiDung" />
+                                    <input class="check" type="checkbox" name="itemID" value="@item.MaNSX" />
                                 </td>
                             </tr>
                         }
@@ -72,8 +65,11 @@
 </div>
 
 <style>
-    .table > thead > tr > th{
-        width:17%;
+    .table > thead > tr > th {
+        width: 28%;
+    }
+    td img{
+        width:40px;
     }
     .form-control1:focus {
         outline: none !important;

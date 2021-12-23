@@ -138,9 +138,9 @@ namespace WebBanHang.Controllers
             }
             else
             {
-                var errors = ModelState.Select(x => x.Value.Errors)
-                           .Where(y => y.Count > 0)
-                           .ToList();
+                //var errors = ModelState.Select(x => x.Value.Errors)
+                //           .Where(y => y.Count > 0)
+                //           .ToList();
                 PopulateDropdownlist();
                 return View(sp);
             }

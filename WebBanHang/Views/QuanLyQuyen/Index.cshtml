@@ -10,7 +10,7 @@
         @using (Html.BeginForm("Index", "QuanLyQuyen", FormMethod.Get))
         {
             <div class="panel-heading">
-                Danh sách loại sản phẩm
+                Danh sách quyền
                 <input type="text" placeholder="Nhập từ khóa tìm kiếm" name="Keyword" id="InputSearch" value="@ViewBag.Keyword" class="form-control1" />
                 <input type="submit" class="btn btn-default act-search" id="btn-find" value="Tìm kiếm" />
                 <button type="button" class="btn btn-success" id="btn-add-sp" style="margin-top:13px; float:right;" onclick="location.href='@Url.Action("ThemMoiQuyen", "QuanLyQuyen")'"><i class="fa fa-plus"></i> Thêm mới</button>
