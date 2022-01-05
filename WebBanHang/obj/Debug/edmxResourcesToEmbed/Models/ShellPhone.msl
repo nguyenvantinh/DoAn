@@ -52,6 +52,8 @@
     <EntitySetMapping Name="KhachHangs">
       <EntityTypeMapping TypeName="SellPhoneModel.KhachHang">
         <MappingFragment StoreEntitySet="KhachHang">
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
           <ScalarProperty Name="MaKhachHang" ColumnName="MaKhachHang" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
           <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />

@@ -150,7 +150,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </li>
                             <li>
                                 <a href="#">
-                                    <span class="photo"><img alt="avatar" src="~/Content/AdminLayout/images/1.png"></span>
+                                    <span class="photo">
+                                    @*<img alt="avatar" src="~/Content/AdminLayout/images/1.png">*@
+                                    </span>
                                     <span class="subject">
                                         <span class="from">Jane Doe</span>
                                         <span class="time">2 min ago</span>
@@ -241,14 +243,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <img alt="" src="~/Content/AdminLayout/images/2.png">
-                            <span class="username">John Doe</span>
+
+                            @{ 
+                                WebBanHang.Models.NguoiDung nd = (WebBanHang.Models.NguoiDung)Session["NguoiDung"];
+                            }
+                            <img alt="avatar" src="~/Content/AdminLayout/images/1.png">
+                            <span class="username" style="text-transform: uppercase;">@nd.TaiKhoan</span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
-                            <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                            <li><a href="/Admin/LogOut"><i class="fa fa-key"></i> Log Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->

@@ -54,6 +54,8 @@
     <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
     <Property Name="Email" Type="nvarchar" MaxLength="255" />
     <Property Name="SoDienThoai" Type="varchar" MaxLength="12" />
+    <Property Name="TaiKhoan" Type="nvarchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="LoaiSanPham">
     <Key>

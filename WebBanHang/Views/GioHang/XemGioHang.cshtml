@@ -229,7 +229,10 @@ else
                     </div>
                     <div id="divbtn">
                         <input type="submit" name="btnDatHang" id="btnDatHang" value="Đặt Hàng" class="btn btn-primary" />
-                        @Html.ActionLink("Tiếp tục mua hàng", "Index", "Home", new { @class = "btn btn-success" })
+                        @*@Html.ActionLink("Tiếp tục mua hàng", "Index", "Home", new { @class = "btn btn-success" })*@
+                    <a href='@Url.Action("Index", "Home")' class="btn btn-success">
+                        Tiếp tục mua hàng
+                    </a>
                     </div>
                 }
             </div>

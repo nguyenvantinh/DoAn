@@ -4,7 +4,11 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Layout/AdminLayout.cshtml";
 }
-
+<style>
+    .wrapper{
+        min-height: 480px;
+    }
+</style>
 <h2 style="color:red;">Người dùng: <font color="red">@Model.HoTen</font></h2>
 <br />
 
@@ -71,14 +75,13 @@
                         </div> 
             }
         }
-        <div class="clearfix"></div>
-        <input type="submit" value="Thực hiện" class="btn btn-success" />
+        <div class="clearfix" style="margin-bottom: 25px;"></div>
+        <input type="submit" value="Lưu" class="btn btn-success" id="btnsm"/>
+        <a href="/QuanLyNguoiDung/Index" class="btn btn-primary">Trở về</a>
 }
-<br />
-@Html.ActionLink("Trở về", "Index", null, new { @class = "btn btn-primary" })
 @*Viết hàm jQuery để duyệt lại checkbox đã được check*@
 <script>
-    $(".ckb_click").click(function () {
+    $("#btnsm").click(function () {
         i = 0;
         $(".ckb_click").each(function () {
             if ($(this).is(':checked')) {

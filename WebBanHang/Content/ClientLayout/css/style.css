@@ -173,7 +173,8 @@ body{
 }
 .register_account{
 	float:left;
-	width:62%;
+	/*width:62%;*/
+	width:68%;
 	padding:20px;
     background:#FFF;
     border:1px solid #C0BEBE;
@@ -210,7 +211,8 @@ body{
 }
 .login_panel{
 	float:left;
-	width:27%;
+	/*width:27%;*/
+	width: 30%;
 	margin-right:2%;
 	padding:20px;
 	background:#FFF;

@@ -31,18 +31,13 @@ namespace WebBanHang.Controllers
         }
 
         [HttpGet]
-        public ActionResult Login(string ReturnUrl = "")
+        public ActionResult Login()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return LogOut();
-            }
-            ViewBag.ReturnUrl = ReturnUrl;
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(LoginView loginView, string ReturnUrl = "")
+        public ActionResult Login(LoginView loginView)
         {
             if (ModelState.IsValid)
             {
@@ -50,7 +45,10 @@ namespace WebBanHang.Controllers
                 //ValidateUser: check xem trong bảng NguoiDung có bản ghi nào có UserName và Password trùng với UserName và Password nhập vào không
                 if (Membership.ValidateUser(loginView.UserName, loginView.Password))
                 {
+                    // lấy ra đối tượng đó
                     var user = (CustomMembershipUser)Membership.GetUser(loginView.UserName, false);
+                    NguoiDung nd = dbContext.NguoiDungs.SingleOrDefault(n => n.MaNguoiDung == user.UserId);
+                    Session["NguoiDung"] = nd;
                     if (user != null)
                     {
                         CustomSerializeModel userModel = new Models.CustomSerializeModel()
@@ -76,15 +74,7 @@ namespace WebBanHang.Controllers
                         HttpCookie faCookie = new HttpCookie("Cookie1", enTicket);
                         Response.Cookies.Add(faCookie);
                     }
-
-                    if (Url.IsLocalUrl(ReturnUrl))
-                    {
-                        return Redirect(ReturnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Admin");
-                    }
+                    return RedirectToAction("Index", "Admin");
                 }
             }
             ModelState.AddModelError("", "Something Wrong : Username or DiaChi invalid ^_^ ");

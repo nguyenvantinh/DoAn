@@ -42,40 +42,63 @@
             <li>
                 <a href="faq.html">Services</a>
                 <ul class="sub-menu list-unstyled sub-menu3">
-                    <div class="navg-drop-main">
-                        <div class="nav-drop">
-                            <li><a href="products.html">Product 4</a></li>
-                            <li><a href="products.html">Product 5</a></li>
-                            <li>
-                                <a href="products.html">Product 6</a>
+                    @*<div class="navg-drop-main">
+                    <div class="nav-drop">
+                        <li><a href="products.html">Product 4</a></li>
+                        <li><a href="products.html">Product 5</a></li>
+                        <li>
+                            <a href="products.html">Product 6</a>
 
-                            </li>
-                        </div>
-                        <div class="nav-drop">
-                            <li><a href="products.html">Product 4</a></li>
-                            <li><a href="products.html">Product 5</a></li>
-                            <li>
-                                <a href="products.html">Product 6</a>
-                            </li>
-                        </div>
-                        <div class="nav-drop">
-                            <li><a href="products.html">Product 4</a></li>
-                            <li><a href="products.html">Product 5</a></li>
-                            <li><a href="products.html">Product 6</a></li>
-                        </div>
-                        <div class="nav-drop">
-                            <li><a href="products.html">Product 4</a></li>
-                            <li><a href="products.html">Product 5</a></li>
-                            <li><a href="products.html">Product 6</a></li>
-                        </div>
-                        <div class="clear"> </div>
+                        </li>
                     </div>
+                    <div class="nav-drop">
+                        <li><a href="products.html">Product 4</a></li>
+                        <li><a href="products.html">Product 5</a></li>
+                        <li>
+                            <a href="products.html">Product 6</a>
+                        </li>
+                    </div>
+                    <div class="nav-drop">
+                        <li><a href="products.html">Product 4</a></li>
+                        <li><a href="products.html">Product 5</a></li>
+                        <li><a href="products.html">Product 6</a></li>
+                    </div>
+                    <div class="nav-drop">
+                        <li><a href="products.html">Product 4</a></li>
+                        <li><a href="products.html">Product 5</a></li>
+                        <li><a href="products.html">Product 6</a></li>
+                    </div>
+                    <div class="clear"> </div>
+                </div>*@
                 </ul>
             </li>
             <li><a href="about.html">About</a></li>
             <li><a href="#">Delivery</a></li>
             <li><a href="faq.html">Faqs</a></li>
-            <li><a href="contact.html">CONTACT</a></li>
+            @if (Session["KhachHang"] != null && Session["KhachHang"].ToString() != "")
+            {
+                WebBanHang.Models.KhachHang kh = (WebBanHang.Models.KhachHang)Session["KhachHang"];
+        <li>
+            <a href="#">Chào @kh.HoTen </a>
+            @*<li>
+            @Html.ActionLink("Đăng xuất", "LogOut", "Guest")
+        </li>*@
+            <ul class="sub-menu list-unstyled sub-menu2">
+                <div class="navg-drop-main">
+                    <div class="nav-drop nav-top-brand">
+                        <li><a href="products.html">Tài khoản của tôi</a></li>
+                        <li><a href="products.html">Đơn mua</a></li>
+                        <li>@Html.ActionLink("Đăng xuất", "LogOut", "Guest")</li>
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+            </ul>
+        </li>
+            }
+            else
+            {
+                <li><a href="../Guest/Login">Đăng Nhập</a></li>
+            }
             <div class="clear"> </div>
         </ul>
     </nav>

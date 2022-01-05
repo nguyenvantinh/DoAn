@@ -46,7 +46,6 @@
                                     Ngày nhập:
                                 </div>
                                 <div class="col-md-5">
-                                    @*Lưu ý phải có type = "text" mới lấy được ngày*@
                                     <input type="datetime" name="NgayNhap" id="datett" style="width: 169px;">
                                 </div>
                             </div>
@@ -174,10 +173,11 @@
 
         // Kiểm tra đơn giá
         function kiemtraDonGia() {
+            debugger
             var kt = true;
             $(".txtDonGia").each(function () {
                 var giatri = $(this).val();
-                if (isNaN(giatri) == true || giatri < 0) {
+                if (isNaN(giatri) == true || giatri < 0) {// not <= 0 vì tr ẩn có value = 0 => dongia của tr ẩn sẽ tmdk >> kt = false >> luôn return false
 
                     kt = false;
                 }
@@ -185,6 +185,7 @@
             return kt;
         }
         function kiemTraSoLuong() {
+            debugger
             var kt = true;
             $(".txtSoLuong").each(function () {
                 var giatri = $(this).val();
