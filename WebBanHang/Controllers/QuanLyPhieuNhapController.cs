@@ -33,7 +33,7 @@ namespace WebBanHang.Controllers
                 // Cập nhật số lượng tồn
                 sp = db.SanPhams.Single(n => n.MaSP == item.MaSP);
                 sp.SoLuongTon += item.SoLuongNhap;
-                // Gán mã phiếu nhập cho từng bản ghi của chi tiết phiếu nhập
+                // Gán mã phiếu nhập cho từng bản ghi của chi tiết phiếu nhập, những thuộc tính khác của ctpn đã dc binding tương ứng từ view
                 item.MaPN = model.MaPN;
             }
             db.ChiTietPhieuNhaps.AddRange(lstModel);

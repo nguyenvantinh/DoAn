@@ -11,13 +11,18 @@
         -moz-box-shadow: none;
         box-shadow: none;
     }
-    .flexslider .slides img{
+
+    .flexslider .slides img {
         padding: 10px;
     }
-    .flex-control-thumbs img{
-        padding:6px;
+
+    .flex-control-thumbs img {
+        padding: 6px;
     }
 </style>
+@section jsFooter{
+    <script src="/Content/ClientLayout/js/Cart.js"></script>
+}
 <div class="content">
     <div class="section group">
         <div class="cont-desc span_1_of_2">
@@ -58,12 +63,12 @@
                 <h2>@Model.TenSP </h2>
                 <p>@Html.Raw(Model.GioiThieu)</p>
                 <div class="price">
-                    <p>Price: <span>$698.03</span></p>
+                    <p>Price: <span>@Model.DonGia.Value.ToString("N0") VND</span></p>
                 </div>
 
                 <div class="add-cart">
 
-                    <div class="button"><span><a href="#">Add to Cart</a></span></div>
+                    <div class="button"><span><a href="#" class="DSAddCart" data-id="@Model.MaSP">Add to Cart</a></span></div>
                     <div class="clear"></div>
                 </div>
             </div>

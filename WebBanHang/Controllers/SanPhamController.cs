@@ -26,11 +26,11 @@ namespace WebBanHang.Controllers
             }
             
         }
-        public ActionResult Detail()
+        public ActionResult Detail(int id)
         {
             ViewBag.SanPhamBanChay = dbContext.SanPhams.Where(n => n.DaXoa == false).OrderByDescending(x=>x.SoLanMua).Take(3);
             ViewBag.SanPhamKhac = dbContext.SanPhams.Where(n => n.DaXoa == false).Take(4);
-            var sp = dbContext.SanPhams.FirstOrDefault(n => n.MaSP == 61 && n.DaXoa == false);
+            var sp = dbContext.SanPhams.FirstOrDefault(n => n.MaSP == id && n.DaXoa == false);
             return View(sp);
         }
        

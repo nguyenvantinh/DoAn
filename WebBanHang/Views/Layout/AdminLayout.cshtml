@@ -242,15 +242,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </li>
                     <!-- user login dropdown start-->
                     <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        @if (Session["NguoiDung"] != null && Session["NguoiDung"].ToString() != "")
+                        {
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
-                            @{ 
-                                WebBanHang.Models.NguoiDung nd = (WebBanHang.Models.NguoiDung)Session["NguoiDung"];
-                            }
-                            <img alt="avatar" src="~/Content/AdminLayout/images/1.png">
-                            <span class="username" style="text-transform: uppercase;">@nd.TaiKhoan</span>
-                            <b class="caret"></b>
-                        </a>
+                                @{
+                                    WebBanHang.Models.NguoiDung nd = (WebBanHang.Models.NguoiDung)Session["NguoiDung"];
+                                }
+                                <img alt="avatar" src="~/Content/AdminLayout/images/1.png">
+                                <span class="username" style="text-transform: uppercase;">@nd.TaiKhoan</span>
+                                <b class="caret"></b>
+                            </a>
+                        }
+
                         <ul class="dropdown-menu extended logout">
                             <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
@@ -290,20 +294,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </ul>
                         </li>
                         <li>
-                            <a href="fontawesome.html">
-                                <i class="fa fa-bullhorn"></i>
-                                <span>Font awesome </span>
+                            <a href="/QuanLyLoaiSanPham">
+                                <i class="fa fa-th"></i>
+                                <span>Loại sản phẩm </span>
                             </a>
                         </li>
                         <li class="sub-menu">
-                            <a href="javascript:;">
-                                <i class="fa fa-th"></i>
-                                <span>Data Tables</span>
+                            <a href="/QuanLyNhaSanXuat">
+                                @*<i class="fa fa-th"></i>*@
+                                <i class="fa fa-industry"></i>
+                                <span>Nhà sản xuất</span>
                             </a>
-                            <ul class="sub">
+                            @*<ul class="sub">
                                 <li><a href="basic_table.html">Basic Table</a></li>
                                 <li><a href="responsive_table.html">Responsive Table</a></li>
-                            </ul>
+                            </ul>*@
+                        </li>
+                        <li class="sub-menu">
+                            <a href="javascript:;">
+                                @*<i class="fa fa-th"></i>*@
+                                <i class="fa fa-industry"></i>
+                                <span>  </span>
+                            </a>
                         </li>
                         <li class="sub-menu">
                             <a href="javascript:;">

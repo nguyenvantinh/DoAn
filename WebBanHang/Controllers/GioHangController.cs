@@ -20,7 +20,7 @@ namespace WebBanHang.Controllers
             return View(lstGioHang);
         }
 
-        public List<ItemGioHang> LayGioHang()
+        public List<ItemGioHang> LayGioHang()//lấy dữ liệu từ session giohang ép kiểu về list itemgiohang, now: get all item from itemgiohang table
         {
             List<ItemGioHang> listGH = Session["GioHang"] as List<ItemGioHang>;
             if (listGH == null)
@@ -40,7 +40,7 @@ namespace WebBanHang.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
-            var listGH = LayGioHang();
+            var listGH = LayGioHang(); 
             ItemGioHang spCheck = listGH.SingleOrDefault(n => n.MaSP == maSP);
             if (spCheck != null)
             {
