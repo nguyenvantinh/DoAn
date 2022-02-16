@@ -98,16 +98,19 @@
                 maSP: productId
             },
             success: function (res) {
-                if (res.status) {
+                if (res.status == true) {
                     cart.getProductCount();
                     //toastr.success('Thêm vào giỏ thành công.');
                     $.notify("Thêm giỏ hàng thành công", "success")
                 }
-                else {
+                else if (res.status == false) {
                     //setTimeout(function () {
                     //    toastr.error(res.message);
                     //}, 1800);
                     $.notify(res.mes, "error")
+                }
+                else {
+                    location.href = "/Guest/Login"
                 }
             }
         });

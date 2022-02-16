@@ -31,6 +31,7 @@
         <AssociationConnector Association="SellPhoneModel.FK__PhieuNhap__MaNCC__656C112C" ManuallyRouted="false" />
         <AssociationConnector Association="SellPhoneModel.FK__SanPham__MaNCC__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="SellPhoneModel.FK__SanPham__MaNSX__3D5E1FD2" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SellPhoneModel.ItemGioHang" Width="2" PointX="10.5" PointY="8.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

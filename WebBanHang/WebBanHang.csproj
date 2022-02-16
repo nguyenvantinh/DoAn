@@ -187,7 +187,9 @@
     <Compile Include="Models\DonDatHang.cs">
       <DependentUpon>ShellPhone.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ItemGioHang.cs" />
+    <Compile Include="Models\ItemGioHang.cs">
+      <DependentUpon>ShellPhone.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\KhachHang.cs">
       <DependentUpon>ShellPhone.tt</DependentUpon>
     </Compile>
@@ -195,6 +197,7 @@
       <DependentUpon>ShellPhone.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginView.cs" />
+    <Compile Include="Models\MetaData\ItemGioHang.cs" />
     <Compile Include="Models\MetaData\KhachHang.cs" />
     <Compile Include="Models\MetaData\LoaiSanPham.cs" />
     <Compile Include="Models\MetaData\NguoiDung.cs" />
