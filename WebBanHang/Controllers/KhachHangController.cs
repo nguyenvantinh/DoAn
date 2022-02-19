@@ -7,16 +7,17 @@ using WebBanHang.Models;
 
 namespace WebBanHang.Controllers
 {
-    public class GuestController : Controller
+    public class KhachHangController : Controller
     {
         SellPhoneContext dbContext = new SellPhoneContext();
-        // GET: Guest
+      
         public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(KhachHang kh)
         {
             if ((!string.IsNullOrEmpty(kh.TaiKhoan)) && (!string.IsNullOrEmpty(kh.MatKhau)))
@@ -42,7 +43,7 @@ namespace WebBanHang.Controllers
         }
 
         [HttpPost]
-        public ActionResult ThemMoiNguoiDung(KhachHang kh)
+        public ActionResult SignUp(KhachHang kh)
         {
             if (ModelState.IsValid)
             {

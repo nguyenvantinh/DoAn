@@ -8,24 +8,24 @@
     <a id="touch-menu" class="mobile-menu" href="#">Menu</a>
     <nav>
         <ul class="menu list-unstyled">
-            <li><a href="/">HOME</a></li>
+            <li><a href="/">Trang chủ</a></li>
             <li class="activate">
-                <a href="products.html">Products</a>
+                <a href="/SanPham/DanhSachSanPham">Sản Phẩm</a>
                 <ul class="sub-menu list-unstyled sub-menu2">
                     <div class="navg-drop-main">
                         <div class="nav-drop nav-top-brand">
                             @foreach (var item in Model.GroupBy(x => x.LoaiSanPham))
                             {
-                                <li><a href="products.html">@item.Key.TenLoai</a></li>
+                                <li><a href="/SanPham/DanhSach?Type=@item.Key.BiDanh">@item.Key.TenLoai</a></li>
                             }
-                            <li><a href="SanPham/DanhSachSanPham">Toàn bộ sản phẩm</a></li>
+                            <li><a href="/SanPham/DanhSachSanPham">Toàn bộ sản phẩm</a></li>
                         </div>
                         <div class="clear"> </div>
                     </div>
                 </ul>
             </li>
             <li>
-                <a href="products.html">Top Brand</a>
+                <a href="products.html">Thương hiệu</a>
                 <ul class="sub-menu list-unstyled sub-menu2">
                     <div class="navg-drop-main">
                         <div class="nav-drop nav-top-brand">
@@ -40,64 +40,32 @@
                 </ul>
             </li>
             <li>
-                <a href="faq.html">Services</a>
-                <ul class="sub-menu list-unstyled sub-menu3">
-                    @*<div class="navg-drop-main">
-                    <div class="nav-drop">
-                        <li><a href="products.html">Product 4</a></li>
-                        <li><a href="products.html">Product 5</a></li>
-                        <li>
-                            <a href="products.html">Product 6</a>
-
-                        </li>
-                    </div>
-                    <div class="nav-drop">
-                        <li><a href="products.html">Product 4</a></li>
-                        <li><a href="products.html">Product 5</a></li>
-                        <li>
-                            <a href="products.html">Product 6</a>
-                        </li>
-                    </div>
-                    <div class="nav-drop">
-                        <li><a href="products.html">Product 4</a></li>
-                        <li><a href="products.html">Product 5</a></li>
-                        <li><a href="products.html">Product 6</a></li>
-                    </div>
-                    <div class="nav-drop">
-                        <li><a href="products.html">Product 4</a></li>
-                        <li><a href="products.html">Product 5</a></li>
-                        <li><a href="products.html">Product 6</a></li>
-                    </div>
-                    <div class="clear"> </div>
-                </div>*@
-                </ul>
+                <a href="faq.html">Tin Tức</a>
             </li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="#">Delivery</a></li>
+            <li><a href="about.html">Giới thiệu</a></li>
+            <li><a href="#">Hỏi đáp</a></li>
             <li><a href="faq.html">Faqs</a></li>
             @if (Session["KhachHang"] != null && Session["KhachHang"].ToString() != "")
             {
                 WebBanHang.Models.KhachHang kh = (WebBanHang.Models.KhachHang)Session["KhachHang"];
-        <li>
-            <a href="#"> @kh.HoTen </a>
-            @*<li>
-            @Html.ActionLink("Đăng xuất", "LogOut", "Guest")
-        </li>*@
-            <ul class="sub-menu list-unstyled sub-menu2">
-                <div class="navg-drop-main">
-                    <div class="nav-drop nav-top-brand">
-                        <li><a href="products.html">Tài khoản của tôi</a></li>
-                        <li><a href="products.html">Đơn mua</a></li>
-                        <li>@Html.ActionLink("Đăng xuất", "LogOut", "Guest")</li>
-                    </div>
-                    <div class="clear"> </div>
-                </div>
-            </ul>
-        </li>
+                <li>
+                    <a href="#"> @kh.HoTen </a>
+           
+                    <ul class="sub-menu list-unstyled sub-menu2">
+                        <div class="navg-drop-main">
+                            <div class="nav-drop nav-top-brand">
+                                <li><a href="products.html">Tài khoản của tôi</a></li>
+                                <li><a href="products.html">Đơn mua</a></li>
+                                <li>@Html.ActionLink("Đăng xuất", "LogOut", "KhachHang")</li>
+                            </div>
+                            <div class="clear"> </div>
+                        </div>
+                    </ul>
+                </li>
             }
             else
             {
-                <li><a href="../Guest/Login">Đăng Nhập</a></li>
+                <li><a href="../KhachHang/Login">Đăng Nhập</a></li>
             }
             <div class="clear"> </div>
         </ul>

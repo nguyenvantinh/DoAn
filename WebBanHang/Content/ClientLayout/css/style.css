@@ -93,9 +93,9 @@ body{
 	right:0;
 	top:0;
 }
-.search_box input[type="submit"]:hover{
+/*.search_box input[type="submit"]:hover{
 	background:#444;
-}
+}*/
 .shopping_cart{
 	float:left;
 	width: 202px;

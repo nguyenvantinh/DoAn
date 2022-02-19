@@ -78,6 +78,7 @@
     <Property Name="TenLoai" Type="nvarchar" MaxLength="100" />
     <Property Name="FromPrice" Type="decimal" Precision="18" Scale="0" />
     <Property Name="ToPrice" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="BiDanh" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="NguoiDung">
     <Key>

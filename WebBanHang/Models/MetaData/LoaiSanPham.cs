@@ -19,6 +19,10 @@ namespace WebBanHang.Models
         [DisplayName("Tên loại sản phẩm")]
         [Required(ErrorMessage ="Nhập tên loại sản phẩm")]
         public string TenLoai { get; set; }
+        
+        [DisplayName("Bí danh")]
+        [Required(ErrorMessage ="Nhập bí danh")]
+        public string BiDanh { get; set; }
 
         [DisplayName("Giá từ")]
         [Required(ErrorMessage ="Nhập đơn giá")]

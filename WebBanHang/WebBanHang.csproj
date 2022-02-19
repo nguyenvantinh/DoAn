@@ -152,7 +152,7 @@
     <Compile Include="Controllers\CustomPrincipal.cs" />
     <Compile Include="Controllers\CustomRole.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
-    <Compile Include="Controllers\GuestController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\PhanQuyenController.cs" />
@@ -165,7 +165,6 @@
     <Compile Include="Controllers\QuanLyPhieuNhapController.cs" />
     <Compile Include="Controllers\QuanLyQuyenController.cs" />
     <Compile Include="Controllers\QuanLySanPhamController.cs" />
-    <Compile Include="Controllers\RedirectingAction.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="DAL\LoaiSanPhamDA.cs" />
     <Compile Include="DAL\NhaCungCapDA.cs" />
@@ -1235,7 +1234,8 @@
     <Content Include="Views\QuanLyNhaCungCap\SuaThongTinNhaCungCap.cshtml" />
     <Content Include="Views\PhanQuyen\Index.cshtml" />
     <Content Include="Views\QuanLyKhachHang\Index.cshtml" />
-    <Content Include="Views\Guest\Login.cshtml" />
+    <Content Include="Views\KhachHang\Login.cshtml" />
+    <Content Include="Views\SanPham\DanhSach.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

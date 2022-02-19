@@ -24,13 +24,13 @@
         //nguoidung đã được phân quyền
         if (lstNDQuyen != null)
         {
-            for (int i = 0; i < lstQuyen.Count(); i++)
+            for (int i = 0; i < lstQuyen.Count(); i++)//1   2   3   4   5   6
             {
                 int k = 0;
-                //lấy từng quyền đã dc gán so sánh vs từng ptu của lstQuyen dc đưa vào
-                for (int j = 0; j < lstNDQuyen.Count(); j++)
+                // 1 so sánh với 2, 3, 4 xem có = ko, 2 so sánh với 2, 3, 4 xem có = ko, 3...
+                for (int j = 0; j < lstNDQuyen.Count(); j++)    // 2    3   4
                 {
-                    // nếu trùng thì k++ >> dc check
+                    // nếu trùng thì k++, break >> k#0 >> dc check
                     if (lstNDQuyen.ElementAt(j).MaQuyen == lstQuyen.ElementAt(i).MaQuyen)
                     {
                         k++;
@@ -79,7 +79,7 @@
         <input type="submit" value="Lưu" class="btn btn-success" id="btnsm"/>
         <a href="/QuanLyNguoiDung/Index" class="btn btn-primary">Trở về</a>
 }
-@*Viết hàm jQuery để duyệt lại checkbox đã được check*@
+@*Viết hàm jQuery để duyệt lại all các checkbox đã được check*@
 <script>
     $("#btnsm").click(function () {
         i = 0;

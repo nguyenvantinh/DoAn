@@ -36,6 +36,14 @@
                                    
                                 </div>
                                 <div class="form-group">
+                                    @Html.LabelFor(model => model.BiDanh, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
+                                    <div class="col-md-8 col-sm-4">
+                                        @Html.EditorFor(model => model.BiDanh, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BiDanh, "", new { @class = "text-danger" })
+                                    </div>
+                                   
+                                </div>
+                                <div class="form-group">
                                     @Html.LabelFor(model => model.FromPrice, htmlAttributes: new { @class = "control-label col-md-4 col-sm-2" })
                                     <div class="col-md-8 col-sm-4">
                                         @Html.EditorFor(model => model.FromPrice, new { htmlAttributes = new { @class = "form-control" } })

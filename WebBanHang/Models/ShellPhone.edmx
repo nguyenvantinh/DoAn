@@ -83,6 +83,7 @@
           <Property Name="TenLoai" Type="nvarchar" MaxLength="100" />
           <Property Name="FromPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="ToPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="BiDanh" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="NguoiDung">
           <Key>
@@ -476,6 +477,7 @@
           <NavigationProperty Name="SanPhams" Relationship="Self.FK__SanPham__MaLoaiS__3E52440B" FromRole="LoaiSanPham" ToRole="SanPham" />
           <Property Name="FromPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ToPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="BiDanh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="NguoiDung">
           <Key>
@@ -880,6 +882,7 @@
           <EntitySetMapping Name="LoaiSanPhams">
             <EntityTypeMapping TypeName="SellPhoneModel.LoaiSanPham">
               <MappingFragment StoreEntitySet="LoaiSanPham">
+                <ScalarProperty Name="BiDanh" ColumnName="BiDanh" />
                 <ScalarProperty Name="ToPrice" ColumnName="ToPrice" />
                 <ScalarProperty Name="FromPrice" ColumnName="FromPrice" />
                 <ScalarProperty Name="MaLoaiSP" ColumnName="MaLoaiSP" />

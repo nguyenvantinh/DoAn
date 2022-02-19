@@ -1,7 +1,7 @@
 ﻿@using PagedList.Mvc;
 @model PagedList.IPagedList<WebBanHang.Models.SanPham>
 @{
-    ViewBag.Title = "DanhSachSanPham";
+    ViewBag.Title = "SanPhamTheoLoai";
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
 
@@ -41,26 +41,28 @@
                 <a href="/SanPham/Detail/@item.MaSP"><img src="@Url.Content("/Content/HinhAnhSP/" + item.HinhAnh)" style="height: 212px; width:180px;" alt="" /></a>
                 <h2>@item.TenSP</h2>
                 <p><span class="price">@item.DonGia.Value.ToString("N0") VND</span></p>
-                    <div class="button">
-                        <span>
-                            <img src="/Content/ClientLayout/images/cart.jpg" alt="" />
-                            <a href="/GioHang/ThemItemGioHang/@item.MaSP" class="cart-button DSAddCart" data-id="@item.MaSP">Add to Cart</a>
-                        </span>
-                        @*@Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = item.MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button", @id="DSAddCart", })*@
-                    </div>
-                    <div class="button"><span><a href="/SanPham/Detail/@item.MaSP" class="details">Details</a></span></div>
+                <div class="button">
+                    <span>
+                        <img src="/Content/ClientLayout/images/cart.jpg" alt="" />
+                        <a href="/GioHang/ThemItemGioHang/@item.MaSP" class="cart-button DSAddCart" data-id="@item.MaSP">Add to Cart</a>
+                    </span>
+                    @*@Ajax.ActionLink("Add to Cart", "ThemItemGioHang", "GioHang", new { @maSP = item.MaSP }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "giohang", InsertionMode = InsertionMode.ReplaceWith }, new { @class="cart-button", @id="DSAddCart", })*@
+                </div>
+                <div class="button"><span><a href="/SanPham/Detail/@item.MaSP" class="details">Details</a></span></div>
             </div>
         }
     </div>
     <div class="text-center" style="margin-top:10px;">
-        @Html.PagedListPager(Model, page => Url.Action("DanhSachSanPham", new { page, @Order = ViewBag.Order }))
+        @Html.PagedListPager(Model, page => Url.Action("DanhSach", new { page, @Order = ViewBag.Order, @Type = ViewBag.Type }))
     </div>
 </div>
 @*<script src="~/Content/ClientLayout/js/Cart.js"></script>*@
 <script type="text/javascript">
     $(document).ready(function () {
+        var type = '@ViewBag.Type';
         $("#Order").change(function () {
-            window.location.href = "?Order=" + this.value;
+            debugger
+            window.location.href = "?Order=" + this.value + "&Type=" + type;
         })
     });
 </script>

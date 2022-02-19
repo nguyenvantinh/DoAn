@@ -174,8 +174,8 @@ else
                     <td>@Model[i].TenSP</td>
                     <td><img src="@Url.Content("/Content/HinhAnhSP/"+Model[i].HinhAnh)" alt="" /></td>
                     <td>@Html.TextBox("soluong" + (i + 1), Model[i].soluong, new { @class = "soluongitem", @type = "number", @min = 1 })</td>
-                    <td>@Model[i].DonGia</td>
-                    <td>@Model[i].ThanhTien</td>
+                    <td>@Model[i].DonGia.Value.ToString("N0")</td>
+                    <td>@Model[i].ThanhTien.Value.ToString("N0")</td>
                     <td>
                         <a class="btn btn-default btn-xs update" data-id="@Model[i].MaSP" data-soluong="@(i +1)"> Cập nhật</a>
                         <a class="btn btn-default btn-xs delete" data-id="@Model[i].MaSP"> Xóa</a>

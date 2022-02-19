@@ -110,7 +110,7 @@
                     $.notify(res.mes, "error")
                 }
                 else {
-                    location.href = "/Guest/Login"
+                    location.href = "/KhachHang/Login"
                 }
             }
         });

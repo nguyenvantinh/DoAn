@@ -63,12 +63,12 @@
                 <h2>@Model.TenSP </h2>
                 <p>@Html.Raw(Model.GioiThieu)</p>
                 <div class="price">
-                    <p>Price: <span>@Model.DonGia.Value.ToString("N0") VND</span></p>
+                    <p>Giá bán: <span>@Model.DonGia.Value.ToString("N0") VND</span></p>
                 </div>
 
                 <div class="add-cart">
 
-                    <div class="button"><span><a href="#" class="DSAddCart" data-id="@Model.MaSP">Add to Cart</a></span></div>
+                    <div class="button"><span><a href="/GioHang/ThemItemGioHang/@Model.MaSP" class="DSAddCart" data-id="@Model.MaSP">Add to Cart</a></span></div>
                     <div class="clear"></div>
                 </div>
             </div>
@@ -149,11 +149,11 @@
         @foreach (var item in lstSanPhamKhac)
         {
             <div class="grid_1_of_4 images_1_of_4">
-                <a href="preview-3.html"><img src="@Url.Content("/Content/HinhAnhSP/" + item.HinhAnh)" style="height: 212px; width:180px;" alt="" /></a>
+                <a href="/SanPham/Detail/@item.MaSP"><img src="@Url.Content("/Content/HinhAnhSP/" + item.HinhAnh)" style="height: 212px; width:180px;" alt="" /></a>
                 <h2>@item.TenSP</h2>
                 <p><span class="price">@item.DonGia.Value.ToString("N0")</span></p>
-                <div class="button"><span><img src="/Content/ClientLayout/images/cart.jpg" alt="" /><a href="preview-3.html" class="cart-button">Add to Cart</a></span> </div>
-                <div class="button"><span><a href="preview-3.html" class="details">Details</a></span></div>
+                <div class="button"><span><img src="/Content/ClientLayout/images/cart.jpg" alt="" /><a href="/GioHang/ThemItemGioHang/@item.MaSP" class="cart-button DSAddCart">Add to Cart</a></span> </div>
+                <div class="button"><span><a href="/SanPham/Detail/@item.MaSP" class="details">Details</a></span></div>
             </div>
         }
     </div>
@@ -236,15 +236,18 @@
             top: 14px;
             right: 120px;
         }
+        .btn-detail:focus{
+            text-decoration: none;
+        }
 
-    .mota {
-        height: 450px;
-        overflow: hidden;
-        transition: .3s;
-        padding: 0 !important;
-        border: none;
-        margin-bottom: 5px;
-    }
+        .mota {
+            height: 450px;
+            overflow: hidden;
+            transition: .3s;
+            padding: 0 !important;
+            border: none;
+            margin-bottom: 5px;
+        }
 
     .modal-content {
         padding: 20px;
