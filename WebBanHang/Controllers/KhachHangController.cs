@@ -49,7 +49,7 @@ namespace WebBanHang.Controllers
             {
                 dbContext.KhachHangs.Add(kh);
                 dbContext.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Login");
             }
             return View();
         }

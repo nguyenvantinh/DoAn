@@ -13,17 +13,21 @@ namespace WebBanHang.Controllers
     {
         SellPhoneContext db = new SellPhoneContext();
         // GET: QuanLyDonHang
+        [CustomAuthorize(Roles = "QLDonHang, QuanTri")]
         public ActionResult ChoDuyet()
         {
             var lst = db.DonDatHangs.Where(n => n.TinhTrangGiaoHang == false && n.DaThanhToan == false).OrderBy(n => n.NgayDat);
             return View(lst);
         }
+
+        [CustomAuthorize(Roles = "QLDonHang, QuanTri")]
         public ActionResult DaGiaoChuaThanhToan()
         {
             var lst = db.DonDatHangs.Where(n => n.TinhTrangGiaoHang == true && n.DaThanhToan == false).OrderByDescending(n => n.NgayDat);
             return View(lst);
         }
 
+        [CustomAuthorize(Roles = "QLDonHang, QuanTri")]
         public ActionResult DaGiaoDaThanhToan()
         {
             var lst = db.DonDatHangs.Where(n => n.DaThanhToan == true && n.TinhTrangGiaoHang == true).OrderByDescending(n => n.NgayDat);
@@ -31,6 +35,7 @@ namespace WebBanHang.Controllers
         }
 
         [HttpGet]
+        [CustomAuthorize(Roles = "QLDonHang, QuanTri")]
         public ActionResult DuyetDonHang(int? id)
         {
             if (id == null)
@@ -62,11 +67,12 @@ namespace WebBanHang.Controllers
             ViewBag.ListChiTietDH = lstChiTietDH;
             if (ddhUpdate.TinhTrangGiaoHang == true && ddhUpdate.DaThanhToan == false)
             {
-                GuiEmail("Xác nhận đơn hàng", "nvt0166@gmail.com", "smartstoreoffical@gmail.com", "tinh@1234", "Đơn hàng đang được giao đến bạn!");
+                GuiEmail("Đặt hàng thành công!", "nvt0166@gmail.com", "smartstoreoffical@gmail.com", "tinh@1234", "Đơn hàng đang được giao đến bạn!");
             }
             return View(ddhUpdate);
         }
 
+        [CustomAuthorize(Roles = "QLDonHang, QuanTri")]
         public void GuiEmail(string Title, string ToEmail, string FromEmail, string PassWord, string Content)
         {
             MailMessage mail = new MailMessage();

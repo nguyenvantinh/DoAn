@@ -1236,6 +1236,8 @@
     <Content Include="Views\QuanLyKhachHang\Index.cshtml" />
     <Content Include="Views\KhachHang\Login.cshtml" />
     <Content Include="Views\SanPham\DanhSach.cshtml" />
+    <Content Include="Views\SanPham\ThuongHieu.cshtml" />
+    <Content Include="Views\SanPham\TimKiem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

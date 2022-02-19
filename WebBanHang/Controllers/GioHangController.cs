@@ -22,7 +22,7 @@ namespace WebBanHang.Controllers
                 var lstGioHang = LayGioHang();
                 return View(lstGioHang);
             }
-            return RedirectToAction("Login", "Guest");
+            return RedirectToAction("Login", "KhachHang");
         }
 
         public List<ItemGioHang> LayGioHang()//lấy dữ liệu từ session giohang ép kiểu về list itemgiohang, now: get all item from itemgiohang table
@@ -121,7 +121,7 @@ namespace WebBanHang.Controllers
                 //khachhang = kh;
                 //db.KhachHangs.Add(khachhang);
                 //db.SaveChanges();
-                return RedirectToAction("Login", "Guest");
+                return RedirectToAction("Login", "KhachHang");
             }
             else
             {

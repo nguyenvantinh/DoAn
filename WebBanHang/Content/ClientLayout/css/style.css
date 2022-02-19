@@ -180,14 +180,14 @@ body{
     border:1px solid #C0BEBE;
     -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;
 }
-.register_account form input[type="text"],.register_account form select{
-	font-size:12px;
-	color:#B3B1B1;
-	padding:8px;
-	outline:none;
-	margin:5px 0;
-	width:340px;
-}
+	.register_account form input[type="text"], .register_account form select {
+		font-size: 12px;
+		color: #2f2d2d;
+		padding: 8px;
+		outline: none;
+		margin: 5px 0;
+		width: 340px;
+	}
 .register_account form select{
 	width:360px;
 	color:#666;
@@ -219,14 +219,14 @@ body{
 	border:1px solid #C0BEBE;
     -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;
 }
-.login_panel input[type="text"],.login_panel input[type="password"]{
-	font-size:12px;
-	color:#B3B1B1;
-	padding:8px;
-	outline:none;
-	margin:6px 0;
-	width:92%;
-}
+	.login_panel input[type="text"], .login_panel input[type="password"] {
+		font-size: 12px;
+		color: #2f2d2d;
+		padding: 8px;
+		outline: none;
+		margin: 6px 0;
+		width: 92%;
+	}
 .login_panel form{
 	margin:15px 0;
 }
@@ -548,7 +548,8 @@ ul.sub-menu.list-unstyled.sub-menu2 {
     width: 100%;
     background: #F0F0F0 !important;
     position: absolute;
-    top: 57px !important;
+    top: 59px !important;
+	left: 1.5px;
 }
 ul.sub-menu.list-unstyled.sub-menu3 {
     position: absolute !important;

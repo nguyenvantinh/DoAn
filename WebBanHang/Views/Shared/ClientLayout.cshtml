@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Smart Store | Trang chủ </title>
+    <title>Smart Store | Online Mall </title>
     <link rel="stylesheet" href="~/Content/AdminLayout/css/bootstrap.min.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -34,9 +34,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
                 <div class="header_top_right">
                     <div class="search_box">
-                        <form>
-                            <input type="text" value="Nhập từ khóa tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nhập từ khóa tìm kiếm';}"><input type="submit" value="Tìm kiếm">
-                        </form>
+                        @using (Html.BeginForm("TimKiem", "SanPham", FormMethod.Get))
+                        {
+                            <input type="text" name="KeyWord" value="@(ViewBag.KeyWord??"")" placeholder="Nhập từ khóa tìm kiếm">
+
+                            <input type="submit" value="Tìm kiếm">
+                        }
+
                     </div>
                     <div id="giohang" class="shopping_cart">
                         <div class="cart">

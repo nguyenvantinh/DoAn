@@ -15,7 +15,7 @@ namespace WebBanHang.Controllers
     {
         SellPhoneContext dbContext = new SellPhoneContext();
 
-        [CustomAuthorize(Roles = "QLNguoiDung")]
+        [CustomAuthorize(Roles = "QLNguoiDung, QuanTri")]
         [HttpGet]
         public ActionResult Index(int Page = 1, int PageSize = 10, string Keyword = "")
         {
@@ -28,14 +28,14 @@ namespace WebBanHang.Controllers
             return View(lstNguoiDung.OrderBy(x => x.HoTen).ToPagedList(Page, PageSize));
         }
 
-        [CustomAuthorize(Roles = "QLNguoiDung")]
+        [CustomAuthorize(Roles = "QLNguoiDung, QuanTri")]
         [HttpGet]
         public ActionResult ThemMoiNguoiDung()
         {
             return View();
         }
         
-        [CustomAuthorize(Roles = "QLNguoiDung")]
+        [CustomAuthorize(Roles = "QLNguoiDung, QuanTri")]
         [HttpPost]
         public ActionResult ThemMoiNguoiDung( NguoiDung nguoiDung)
         {
@@ -48,7 +48,7 @@ namespace WebBanHang.Controllers
             return View();
         }
         
-        [CustomAuthorize(Roles = "QLNguoiDung")]
+        [CustomAuthorize(Roles = "QLNguoiDung, QuanTri")]
         [HttpGet]
         public ActionResult SuaThongTinNguoiDung( int? id)
         {
@@ -64,7 +64,7 @@ namespace WebBanHang.Controllers
             return View(nd);
         }
         
-        [CustomAuthorize(Roles = "QLNguoiDung")]
+        [CustomAuthorize(Roles = "QLNguoiDung, QuanTri")]
         [HttpPost]
         public ActionResult SuaThongTinNguoiDung(NguoiDung nguoiDung)
         {
@@ -73,7 +73,7 @@ namespace WebBanHang.Controllers
                 return RedirectToAction("Index");
         }
 
-        [CustomAuthorize(Roles = "QLNguoiDung")]
+        [CustomAuthorize(Roles = "QLNguoiDung, QuanTri")]
         [HttpDelete]
         public ActionResult XoaNguoiDung(int? id)
         {
@@ -91,7 +91,7 @@ namespace WebBanHang.Controllers
             return RedirectToAction("Index");
         }
 
-        [CustomAuthorize(Roles = "QLNguoiDung")]
+        [CustomAuthorize(Roles = "QLNguoiDung, QuanTri")]
         [HttpPost]
         public ActionResult DeleteMulti(FormCollection formCollection)
         {

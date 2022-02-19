@@ -4,6 +4,11 @@
     Layout = "~/Views/Shared/ClientLayout.cshtml";
 }
 
+<style>
+    .block{
+        display: block;
+    }
+</style>
 @section jsFooter{
     <script src="/Content/ClientLayout/js/Cart.js"></script>
 }
@@ -31,23 +36,39 @@
     </div>
     <div class="register_account">
         <h3>Tạo mới tài khoản</h3>
-        <form>
+        @using (Html.BeginForm("SignUp", "KhachHang", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <table>
                 <tbody>
                     <tr>
                         <td>
-                            <div><input type="text" placeholder="Tài khoản"></div>
-                            <div><input type="text" placeholder="Mật khẩu"></div>
-                            <div><input type="text" placeholder="Họ tên"></div>
-                            @*<div><input type="text" placeholder="Địa chỉ"></div>*@
+                            <div>
+                                @Html.EditorFor(model => model.TaiKhoan, new { htmlAttributes = new { @placeholder = "Tài khoản", @class = "block" } })
+                                @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @placeholder = "Mật khẩu", @class = "block" } })
+                                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @placeholder = "Họ tên", @class = "block" } })
+                                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                            </div>
                         </td>
                         <td>
-                            <div><input type="text" placeholder="Số điện thoại"></div>
-                            <div><input type="text" placeholder="Email"></div>
-                            @*<div><input type="text" placeholder="Giới tính"></div>*@
                             <div>
-                                <select name="GioiTinh" id="GioiTinh" style="width: 340px;">
-                                    <option value="">Chọn giới tính</option>
+                                @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @placeholder = "Số điện thoại", @class = "block" } })
+                                @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @placeholder = "Email", type = "text", @class = "block" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                <select name="GioiTinh" id="GioiTinh" style="width: 340px; display:block;" >
+                                    <option value="" disabled>Chọn giới tính</option>
                                     <option value="Nam">Nam</option>
                                     <option value="Nữ">Nữ</option>
                                 </select>
@@ -56,12 +77,15 @@
                     </tr>
                 </tbody>
             </table>
-            <div><input type="text" placeholder="Địa chỉ" style="width: 100%;"></div>
+            <div>
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @placeholder = "Địa chỉ", style = "width: 100%;" } })
+                @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+            </div>
             <div class="search">
                 <div><button class="grey">Create Account</button></div>
             </div>
             <div class="clear"></div>
-        </form>
-    </div>
+         }
+        </div>
     <div class="clear"></div>
 </div>

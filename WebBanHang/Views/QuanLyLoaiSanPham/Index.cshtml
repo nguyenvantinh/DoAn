@@ -26,8 +26,8 @@
                             <th>Mã loại sp</th>
                             <th>Tên loại sp</th>
                             <th>Bí danh</th>
-                            <th>Giá từ</th>
-                            <th>Đến</th>
+                            @*<th>Giá từ</th>
+                            <th>Đến</th>*@
                             <th class="col-flex">
                                 <button type="submit" id="btnDelete" class="btn btn-danger btn-xs" style="margin-left: 50px; color: #f5eeee"><i class="fa fa-trash-o"></i>Xóa</button>
                                 <input class="checkAll ml" type="checkbox" name="lstID" />
@@ -41,8 +41,8 @@
                                 <td>@item.MaLoaiSP</td>
                                 <td>@item.TenLoai</td>
                                 <td>@item.BiDanh</td>
-                                <td>@item.FromPrice.Value.ToString("N0")</td>
-                                <td>@item.ToPrice.Value.ToString("N0")</td>
+                                @*<td>@item.FromPrice.Value.ToString("N0")</td>
+                                <td>@item.ToPrice.Value.ToString("N0")</td>*@
                                 <td>
                                     <a class="btn btn-default btn-xs" href="/QuanLyLoaiSanPham/SuaThongTinLoaiSanPham/@item.MaLoaiSP"><i class="fa fa-edit"></i> Sửa</a>
 
@@ -70,7 +70,7 @@
 
 <style>
     .table > thead > tr > th{
-        width: 21%;
+        width: 28%;
     }
     .form-control1:focus {
         outline: none !important;

@@ -31,7 +31,7 @@
                         <div class="nav-drop nav-top-brand">
                             @foreach (var item in Model.GroupBy(x => x.NhaSanXuat))
                             {
-                                <li><a href="products.html">@item.Key.TenNSX</a></li>
+                                <li><a href="/SanPham/ThuongHieu?t=@item.Key.TenNSX">@item.Key.TenNSX</a></li>
                             }
 
                         </div>
@@ -44,13 +44,21 @@
             </li>
             <li><a href="about.html">Giới thiệu</a></li>
             <li><a href="#">Hỏi đáp</a></li>
-            <li><a href="faq.html">Faqs</a></li>
+            @if (Session["KhachHang"] != null && Session["KhachHang"].ToString() != "")
+            {
+                
+            }
+            else
+            {
+                <li><a href="#">Faqs</a></li>
+            }
+            
             @if (Session["KhachHang"] != null && Session["KhachHang"].ToString() != "")
             {
                 WebBanHang.Models.KhachHang kh = (WebBanHang.Models.KhachHang)Session["KhachHang"];
                 <li>
-                    <a href="#"> @kh.HoTen </a>
-           
+                    <a href="#"> Chào @kh.HoTen </a>
+
                     <ul class="sub-menu list-unstyled sub-menu2">
                         <div class="navg-drop-main">
                             <div class="nav-drop nav-top-brand">

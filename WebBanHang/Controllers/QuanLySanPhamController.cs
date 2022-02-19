@@ -15,7 +15,7 @@ namespace WebBanHang.Controllers
     {
         SellPhoneContext dbContext = new SellPhoneContext();
         // GET: QuanLySanPham
-        [CustomAuthorize(Roles = "QLSanPham")]
+        [CustomAuthorize(Roles = "QLSanPham, QuanTri")]
         [HttpGet]
         public ActionResult Index(int Page = 1, int PageSize = 10, string Keyword="")
         {
