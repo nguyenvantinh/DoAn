@@ -11,7 +11,7 @@ ol,ul{list-style:none;margin:0;padding:0;}
 blockquote,q{quotes:none;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
 table{border-collapse:collapse;border-spacing:0;}
-/* start editing from here */
+/* start editing from here */.login_panel
 a{text-decoration:none;}
 .txt-rt{text-align:right;}/* text align right */
 .txt-lt{text-align:left;}/* text align left */
@@ -60,17 +60,17 @@ body{
 	position:relative;
 	width:47%;
 }
-.search_box input[type="text"]{
-	width:74%;
-	padding:10px 8px;
-	outline:none;
-	border:none;
-	background:none;
-	font-size:14px;
-	color:#a5a5a5;
-	font-family:Arial;
-	outline:none;
-	margin:0;
+.search_box input[type="text"] {
+	width: 74%;
+	padding: 10px 8px;
+	outline: none;
+	border: none;
+	background: none;
+	font-size: 14px;
+	color: #5f5c5c;
+	font-family: Arial;
+	outline: none;
+	margin: 0;
 }
 .search_box input[type="submit"]{
 	border:none;
@@ -215,6 +215,7 @@ body{
 	width: 30%;
 	margin-right:2%;
 	padding:20px;
+	padding-bottom: 12px;
 	background:#FFF;
 	border:1px solid #C0BEBE;
     -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;
@@ -422,9 +423,11 @@ ul.menu.list-unstyled li a {
     font-family: 'Doppio One', sans-serif;
     border-left: 2px groove #636363;
 	width:100%;
+	cursor: pointer;
 }
 ul.menu.list-unstyled li a:hover {
     color: #FFF;
+	cursor: pointer !important;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70389c',endColorstr='#602d8d');
     background: -webkit-gradient(linear,left top,left bottom,from(#70389C),to(#602D8D));
     background: -moz-linear-gradient(top,#70389C,#602D8D);
@@ -1085,7 +1088,8 @@ ul.sub-menu.list-unstyled.sub-menu3 {
 	text-transform:uppercase;
 }
 .span_3_of_2  p{
-	font-size:0.8125em;
+	/*font-size:0.8125em;*/
+	font-size: 0.9em;
 	padding:0.3em 0;
 	color:#969696;
 	line-height: 1.6em;

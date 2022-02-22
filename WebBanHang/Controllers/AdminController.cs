@@ -9,6 +9,7 @@ using WebBanHang.Models;
 using PagedList;
 using System.IO;
 using System.Net;
+using System.Collections.Generic;
 
 namespace WebBanHang.Controllers
 {
@@ -17,10 +18,78 @@ namespace WebBanHang.Controllers
         SellPhoneContext dbContext = new SellPhoneContext();
 
         [CustomAuthorize(Roles = "AccessibleAdmin")]
-        public ActionResult Index()
+        public ActionResult ThongKe(int thang = 12, int nam = 2021)
         {
+            ViewBag.TongDoanhThu = ThongKeDoanhThu();
+            ViewBag.TongDDH = ThongKeDonHang();
+            ViewBag.TongThanhVien = TongThanhVien();
+
+            ViewBag.thang = thang;
+            ViewBag.nam = nam;
+
+            var lstDH = dbContext.DonDatHangs.Where(n => n.NgayDat.Value.Month == thang && n.NgayDat.Value.Year == nam).OrderBy(x => x.NgayDat.Value.Day).ToList();
+
+            var lstNgay = lstDH.Select(r => r.NgayDat.Value.Day).Distinct().ToList();
+
+            List<int> DoanhThuTheoNgay = new List<int>();
+            var tong = 0;
+
+            for (int i = 0; i < lstDH.Count; i++)
+            {
+                tong += int.Parse(lstDH[i].ChiTietDonDatHangs.Sum(n => n.SoLuong * n.DonGia).Value.ToString());
+                #region comments
+                //if (i == lst.Count - 1 || lst[i].NgayDat.Value.Day != lst[i + 1].NgayDat.Value.Day)
+                //{
+                //    doanhthungay.Add(tong);
+                //    tong = 0;
+                //}
+                //else
+                //{
+
+                //}
+                #endregion
+
+                if (i == lstDH.Count - 1)
+                {
+                    DoanhThuTheoNgay.Add(tong);
+                    tong = 0;
+                }
+                else if (lstDH[i].NgayDat.Value.Day == lstDH[i + 1].NgayDat.Value.Day)
+                {
+
+                }
+                else
+                {
+                    DoanhThuTheoNgay.Add(tong);
+                    tong = 0;
+                }
+
+            }
+            ViewBag.LstNgay = lstNgay;
+            ViewBag.LstDoanhThuTheoNgay = DoanhThuTheoNgay;
             return View();
         }
+
+        public decimal? ThongKeDoanhThu()
+        {
+            decimal? TongDoanhThu = dbContext.ChiTietDonDatHangs.Sum(n => n.DonGia * n.SoLuong);
+            return TongDoanhThu;
+        }
+
+        public double ThongKeDonHang()
+        {
+            //Đếm đơn đặt hàng
+            double sl = dbContext.DonDatHangs.Count();
+            return sl;
+        }
+
+        public double TongThanhVien()
+        {
+            double slTV = dbContext.KhachHangs.Count();
+            return slTV;
+        }
+
+
         //[CustomAuthorize(Roles = "QuanTri")] // ko có quyền >> trả về trang dc style riêng
         [Authorize]// ko có quyền >> trả về trang mặc định 
         public ActionResult AddUser()
@@ -74,7 +143,7 @@ namespace WebBanHang.Controllers
                         HttpCookie faCookie = new HttpCookie("Cookie1", enTicket);
                         Response.Cookies.Add(faCookie);
                     }
-                    return RedirectToAction("Index", "Admin");
+                    return RedirectToAction("ThongKe", "Admin");
                 }
             }
             ModelState.AddModelError("", "Something Wrong : Username or DiaChi invalid ^_^ ");
@@ -146,6 +215,16 @@ namespace WebBanHang.Controllers
 
             FormsAuthentication.SignOut();
             return RedirectToAction("Login", "Admin", null);
+        }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (dbContext != null)
+                    dbContext.Dispose();
+                dbContext.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

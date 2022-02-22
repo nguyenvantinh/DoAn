@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<style>
+    body {
+        background: #efe0e7 !important;
+    }
+    #chart_container {
+        width: 500px;
+        height: 500px;
+        border: 1px solid #ddd;
+        padding: 1px;
+        border-radius: 4px;
+    }
+    .wrapper {
+        padding: 0 15px 15px 15px !important;
+    }
+    .chart_area {
+        padding: 0 15px 15px 15px !important;
+    }
+    .market-updates{
+        margin: 1.5em 0 !important;
+    }
+    .tt{
+        width: 65px;
+    }
+    #myChart {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block !important;
+        height: 335px !important;
+    }
+    .market-update-block{
+        padding: 1.5em !important;
+    }
+        .market-update-block h4{
+            font-size: 1.3em !important;
+        }
+        .market-update-block h3{
+            font-size: 22px !important;
+        }
+</style>
+<!-- //market-->
+<div class="market-updates">
+    <div class="col-md-3 market-update-gd">
+        <div class="market-update-block clr-block-2">
+            <div class="col-md-4 market-update-right">
+                <i class="fa fa-eye"> </i>
+            </div>
+            <div class="col-md-8 market-update-left">
+                <h4>Lượt truy cập</h4>
+                <h3>13,500</h3>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="col-md-3 market-update-gd">
+        <div class="market-update-block clr-block-1">
+            <div class="col-md-4 market-update-right">
+                <i class="fa fa-users"></i>
+            </div>
+            <div class="col-md-8 market-update-left">
+                <h4>Khách hàng</h4>
+                <h3>1,250</h3>
+                @*<h3>@ViewBag.TongThanhVien</h3>*@
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="col-md-3 market-update-gd">
+        <div class="market-update-block clr-block-3">
+            <div class="col-md-4 market-update-right">
+                <i class="fa fa-usd"></i>
+            </div>
+            <div class="col-md-8 market-update-left">
+                <h4>Doanh thu</h4>
+                <h3>@ViewBag.TongDoanhThu.ToString("#,##")</h3>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="col-md-3 market-update-gd">
+        <div class="market-update-block clr-block-4">
+            <div class="col-md-4 market-update-right">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-8 market-update-left">
+                <h4>Đơn hàng</h4>
+                <h3>1,500</h3>
+            @*<h3>@ViewBag.TongDDH</h3>*@
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!-- chart-->
+<div class="chart_area">
+    @using (Html.BeginForm("ThongKe", "Admin", FormMethod.Get))
+    {
+        <span>Chọn tháng:</span> <input type="number" name="thang" value="@ViewBag.thang" class="tt"/>
+        <span style="margin-left: 10px;">Chọn năm:</span> <input type="number" name="nam" value="@ViewBag.nam" class="tt"/>
+
+        <button style="margin-left: 13px;">thống kê</button>
+    }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+</div>
+<script>
+    var xValues = @Html.Raw(Json.Encode(ViewBag.LstNgay));
+    var yValues = @Html.Raw(Json.Encode(ViewBag.LstDoanhThuTheoNgay));
+    var barColors = ["red", "green", "blue", "orange", "brown", "yellow", "purple","gray","olive","violet"];
+    var thang = '@ViewBag.thang';
+    var nam = '@ViewBag.nam';
+
+    new Chart("myChart", {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+            }]
+        },
+        options: {
+            legend: { display: false },
+            title: {
+                display: true,
+                text: "Doanh thu theo ngày của tháng " + thang + " năm " + nam
+            }
+        }
+    });
+</script>
